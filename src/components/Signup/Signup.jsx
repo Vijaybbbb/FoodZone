@@ -1,29 +1,34 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import '../Signup/Signup.css'
+import { FirebaseContext } from '../../context/FIrebaseContext';
 
 const SignInPage = () => {
+  
+  const [email,setEmail] = useState() 
+  const [username,setUsername] = useState()
+  const [password,setPassword] = useState() 
+
+  const {Firebase} = useContext(FirebaseContext)
+
+  const handleSubmit = () =>{
+    event.preventDefault();
+    Firebase.auth().createUserWithEmailAndPassword(email,password).then((result)=>{
+      result.user.updateProfile({displayName:username})
+    })
+  }
+
   return (
-    <html>
-      <head>
-        <link rel="stylesheet" href="css/style.css" />
-        <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css" />
-        <title>Sign in</title>
-      </head>
-      <body>
-        <div className="main">
+  
+    <div className="main">
           <p className="sign" align="center">Sign Up</p>
           <form className="form1">
-            <input className="un" type="text" align="center" placeholder="Email" />
-            <input className="un" type="text" align="center" placeholder="Username" />
-            <input className="pass" type="password" align="center" placeholder="Password" />
-            <a className="submit" align="center">Sign Up</a>
+            <input className="un" type="text" align="center" placeholder="Email" onChange={(e)=>{setEmail(e.target.value)}} />
+            <input className="un" type="text" align="center" placeholder="Username"  onChange={(e)=>{setUsername(e.target.value)}}/>
+            <input className="pass" type="password" align="center" placeholder="Password"  onChange={(e)=>{setPassword(e.target.value)}}/>
+            <a className="submit" align="center" onClick={handleSubmit}>Sign Up</a>
             <p className="forgot" align="center"><a href="#">Forgot Password?</a></p>
           </form>
         </div>
-      </body>
-    </html>
   );
 };
 

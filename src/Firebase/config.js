@@ -1,13 +1,17 @@
-import firebase from 'firebase'
+import { initializeApp } from 'firebase/app';
+import 'firebase/auth'
+
 
 const firebaseConfig = {
-       apiKey: "AIzaSyCmalwN3j3RHC1pDeP9IcKQvCC-TFQItLU",
-       authDomain: "foodzone-e2268.firebaseapp.com",
-       projectId: "foodzone-e2268",
-       storageBucket: "foodzone-e2268.appspot.com",
-       messagingSenderId: "299288555647",
-       appId: "1:299288555647:web:7bb3e934256e436a578f4a",
-       measurementId: "G-S9DVNN7HX9"
-     };
+   apiKey: "YOUR_API_KEY",
+   authDomain: "YOUR_AUTH_DOMAIN",
+   projectId: "YOUR_PROJECT_ID",
+   storageBucket: "YOUR_STORAGE_BUCKET",
+   messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+   appId: "YOUR_APP_ID",
+   measurementId: "YOUR_MEASUREMENT_ID"
+};
 
-export  const Firebase = firebase.initialiseApp(firebaseConfig)
+const Firebase = initializeApp(firebaseConfig);
+
+export { Firebase };

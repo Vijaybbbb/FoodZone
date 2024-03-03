@@ -2,14 +2,17 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import './index.css'
-import Context from './context/context.jsx'
+import Context from './context/FIrebaseContext.jsx'
+
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <Context>
-    <App/>
-    </Context>
+ <Context>
+ <App/>
+ </Context>
+   
+   
    
   </React.StrictMode>,
 )
