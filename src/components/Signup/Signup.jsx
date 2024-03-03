@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import '../Signup/Signup.css'
 import { FirebaseContext } from '../../context/FIrebaseContext';
 
+
 const SignInPage = () => {
   
   const [email,setEmail] = useState() 
@@ -10,11 +11,12 @@ const SignInPage = () => {
 
   const {Firebase} = useContext(FirebaseContext)
 
-  const handleSubmit = () =>{
+  const handleSubmit = (event) =>{
     event.preventDefault();
     Firebase.auth().createUserWithEmailAndPassword(email,password).then((result)=>{
-      result.user.updateProfile({displayName:username})
+      console.log(result);
     })
+   
   }
 
   return (
