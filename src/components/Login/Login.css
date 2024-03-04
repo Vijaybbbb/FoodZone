@@ -107,10 +107,12 @@ body {
 
     .submitsign
     {
+        
         position: absolute;
-        left: 740px;
-        bottom: 285px;
-        color: #E040FB;
-        cursor: pointer;  
+       left: 50%; /* Center the button horizontally */
+       bottom: 40%; /* Adjust the distance from the bottom */
+        transform: translateX(-50%); /* Center the button horizontally */
+       color: #E040FB;
+        cursor: pointer;
         
     }
