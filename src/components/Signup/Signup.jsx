@@ -1,6 +1,10 @@
 import React, { useContext, useState } from 'react';
 import '../Signup/Signup.css'
 import { FirebaseContext } from '../../context/FIrebaseContext';
+import { auth } from '../../Firebase/config';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import '../../Firebase/config';
+import { collection,getFirestore,addDoc } from 'firebase/firestore';
 
 
 const SignInPage = () => {
@@ -8,15 +12,22 @@ const SignInPage = () => {
   const [email,setEmail] = useState() 
   const [username,setUsername] = useState()
   const [password,setPassword] = useState() 
+  
+  const db  = getFirestore()
+ // const {Firebase} = useContext(FirebaseContext)
+  
 
-  const {Firebase} = useContext(FirebaseContext)
-
-  const handleSubmit = (event) =>{
+  const handleSubmit = async(event) =>{
     event.preventDefault();
-    Firebase.auth().createUserWithEmailAndPassword(email,password).then((result)=>{
-      console.log(result);
+    await createUserWithEmailAndPassword(auth,email,password).then((result)=>{
+    result.user.displayName = username
+    addDoc(collection(db, 'users'), {
+      id:result.user.uid,  // <-- Object representing document data
+      name:username,
+      cart:[]
+    });
+    
     })
-   
   }
 
   return (
