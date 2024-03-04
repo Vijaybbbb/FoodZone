@@ -12,8 +12,7 @@ const Navbar = () => {
           <li><a href="#banner" onClick="toggleMenu();">Home</a></li>
           <li><a href="#about" onClick="toggleMenu();">About</a></li>
           <li><a href="#menu" onClick="toggleMenu();">Menu</a></li>
-          <li><a href="#expert" onClick="toggleMenu();">Expert</a></li>
-          <li><a href="#testimonials" onClick="toggleMenu();">Testimonials</a></li>
+          <li><a href="#expert" onClick="toggleMenu();">Login</a></li>
           <li className="conta"><a href="#contact" onClick="toggleMenu();">Contact</a></li>
         </ul>
       </header>

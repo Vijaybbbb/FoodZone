@@ -1,15 +1,18 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './Script.js'
 import './ProductPage.css'
-
+import axios from 'axios'
 
 const ProductPage = () => {
+  const [item,setItem] = useState()
+
+ 
   return (
     <div>
       <div class="container">
   <div class="navbar">
     <div class="logo">
-      <a href="index.html"><img src="https://i.ibb.co/kDVwgwp/logo.png" alt="RedStore" width="125px" /></a>
+      <a href="index.html">FOOD ZONE</a>
     </div>
     <nav>
       <ul id="MenuItems">
@@ -310,6 +313,7 @@ const ProductPage = () => {
     <p class="copyright">Copyright &copy; 2021 - Red Store</p>
   </div>
 </div>
+
 
 
 
