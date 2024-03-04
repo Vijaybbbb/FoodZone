@@ -1,4 +1,6 @@
 import React from 'react'
+import '../Home/Home.css'
+import '../Home/Script.js'
 
 const Navbar = () => {
   return (
