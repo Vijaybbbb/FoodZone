@@ -19,7 +19,7 @@ const UserNavbar = () => {
               <li><a href="">Products</a></li>
               <li><a href="">My Orders</a></li>
               <li><a href="">Wishlist</a></li>
-              <li><a href="">Account</a></li>
+              <li><a href="" onClick={()=>{navigate('/profile')}} >Account</a></li>
             </ul>
           </nav>
           <a href="cart.html"><img src="https://i.ibb.co/PNjjx3y/cart.png" alt="" width="30px" height="30px" /></a>

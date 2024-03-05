@@ -4,6 +4,7 @@ import Signup from './components/Signup/Signup'
 import Login from './components/Login/Login'
 import Home from './components/Home/Home'
 import ProductPage from './components/ProductsPage/ProductPage'
+import Profile from './components/Profile/Profile'
 
 function App() {
 
@@ -23,6 +24,10 @@ function App() {
     {
       path:'products',
       element:<ProductPage/>
+    },
+    {
+      path:'profile',
+      element:<Profile/>
     }
   ])
 
