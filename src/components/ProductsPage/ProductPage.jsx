@@ -6,7 +6,9 @@ import UserNavbar from '../UserNavBar/UserNavbar.jsx';
 
 
 const ProductPage = () => {
+
   const [item, setItem] = useState();
+  const [page,setPage]  = useState(1)
 
   useEffect(() => {
     const fetchData = async (category) => {
@@ -25,8 +27,6 @@ const ProductPage = () => {
   }, [])
 
 
-  console.log(item);
-
   return (
     <div>
       <UserNavbar/>
@@ -44,11 +44,6 @@ const ProductPage = () => {
         </div>
 
 
-        {/* {item && item.map((data) => {
-          return <div className='row'><img src={data.strMealThumb}></img></div>;
-        })
-        }
- */}
 <div class="container">
    <div class="art-board">
       <div class="art-board__container">
