@@ -1,7 +1,11 @@
 import React from 'react'
 import '../ProductsPage/ProductPage.css'
+import { useNavigate } from 'react-router-dom'
 
 const UserNavbar = () => {
+
+       const navigate = useNavigate()
+
   return (
     <div>
       <div className="navcontainer">
@@ -11,11 +15,11 @@ const UserNavbar = () => {
           </div>
           <nav>
             <ul id="MenuItems">
-              <li><a href="index.html">Home</a></li>
-              <li><a href="product.html">Products</a></li>
-              <li><a href="#">My Orders</a></li>
-              <li><a href="#">Wishlist</a></li>
-              <li><a href="account.html">Account</a></li>
+              <li><a href="" onClick={()=>{navigate('/home')}}>Home</a></li>
+              <li><a href="">Products</a></li>
+              <li><a href="">My Orders</a></li>
+              <li><a href="">Wishlist</a></li>
+              <li><a href="">Account</a></li>
             </ul>
           </nav>
           <a href="cart.html"><img src="https://i.ibb.co/PNjjx3y/cart.png" alt="" width="30px" height="30px" /></a>

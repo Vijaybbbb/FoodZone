@@ -677,13 +677,22 @@
    padding-top: 30px;
 }
 .card__info p {
-   font-size: 14px;
+   font-size: 20px;
    font-weight: 600;
+
 }
 .card__info--price {
    text-align: right;
    color: orangered;
+   
 }
+.price{
+  padding-left: 200px;
+  margin-top: -25px;
+  font-size: 20px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
 .rect2 {
    position: relative;
    bottom: 315px;
@@ -769,3 +778,6 @@
 .pagination_selected{
 background-color: #ff523b;
 }
+
+
+
