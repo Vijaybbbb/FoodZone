@@ -3,17 +3,20 @@ import '../Login/Login.css'
 import { useNavigate } from 'react-router-dom'
 import { auth } from '../../Firebase/config';
 import { signInWithEmailAndPassword } from 'firebase/auth';
+import { findUser } from '../../Redux/loginSlice';
+import { useDispatch } from 'react-redux';
 
 const Login = () => {
 
        const navigate = useNavigate()
-
        const [email,setEmail] = useState()
        const [password,setPassword] = useState()
+        const dispatch = useDispatch()
 
        function handleLogin(){
             signInWithEmailAndPassword(auth,email,password).then(()=>{
-                navigate('/home')
+                navigate('/products')
+                dispatch(findUser({email,password}))
             }).catch(()=>{
                 console.log('Invalid Credentials');
             })
