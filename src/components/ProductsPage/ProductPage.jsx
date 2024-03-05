@@ -14,7 +14,7 @@ const ProductPage = () => {
     const fetchData = async (category) => {
       try {
         const response = await axios.get(`https://www.themealdb.com/api/json/v1/1/search.php?f=${category}`);
-        setItem(response.data.meals.slice(0,12))
+        setItem(response.data.meals)
 
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -25,6 +25,17 @@ const ProductPage = () => {
     fetchData('b');
 
   }, [])
+
+
+  //function for indicate pagination
+  function selectedPage(selectedPage){
+    if(
+      selectedPage >= 1 &&
+      selectedPage <= item.length  &&
+      selectedPage !== page
+    )
+    setPage(selectedPage)
+  }
 
 
   return (
@@ -47,7 +58,7 @@ const ProductPage = () => {
 <div class="container">
    <div class="art-board">
       <div class="art-board__container">
-         {item && item.map((data, index) => (
+         {item && item.slice(page*12-12, page * 12).map((data, index) => (
             <div class="card" key={index}>
                <div class="card__image">
                   <img src={data.strMealThumb} alt="Meal" />
@@ -83,15 +94,25 @@ const ProductPage = () => {
 
 
 
+{item && item.length > 0 && (
+  <div className="page-btn">
+    <span onClick={()=>{selectedPage(page-1)}}>{'<'}</span>
+    {[...Array(Math.ceil(item.length / 12))].map((_, i) => (
+      <span
+       key={i + 1}
+       onClick={()=>{selectedPage(i+1)}}
+       className={page === i+1 ? 'pagination_selected' : '' }
+       
+       >{i + 1}</span>
+    ))}
+    <span onClick={()=>{selectedPage(page+1)}}>{'>'}</span>
+   
+  </div>
+)}
 
 
-        <div className="page-btn">
-          <span>1</span>
-          <span>2</span>
-          <span>3</span>
-          <span>4</span>
-          <span>&#8594;</span>
-        </div>
+
+
       </div>
 
       <div className="footer">

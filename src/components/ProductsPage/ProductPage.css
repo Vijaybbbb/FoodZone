@@ -359,7 +359,10 @@
      }
      
      .page-btn {
-       margin: 0 auto 80px;
+      display: flex;
+      justify-content: center;
+      margin-top: 30px; 
+      padding-bottom: 20px;
      }
      
      .page-btn span {
@@ -371,6 +374,7 @@
        text-align: center;
        line-height: 40px;
        cursor: pointer;
+       justify-content: center;
      }
      
      .page-btn span:hover {
@@ -760,4 +764,8 @@
 .CartBtn:active {
   transform: scale(0.95);
   transition-duration: .5s;
+}
+
+.pagination_selected{
+background-color: #ff523b;
 }
