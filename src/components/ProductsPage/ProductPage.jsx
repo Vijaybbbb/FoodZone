@@ -3,6 +3,7 @@ import './Script.js';
 import './ProductPage.css';
 import axios from 'axios';
 import UserNavbar from '../UserNavBar/UserNavbar.jsx';
+import Footer from '../Footer/Footer.jsx';
 
 
 const ProductPage = () => {
@@ -15,7 +16,14 @@ const ProductPage = () => {
       try {
         const response = await axios.get(`https://www.themealdb.com/api/json/v1/1/search.php?f=${category}`);
 
-        setItem(response.data.meals)
+        // setItem(response.data.meals)
+        setItem(prevData => {
+          if (prevData === undefined) {
+            return [...response.data.meals];
+          } else {
+            return [...prevData, ...response.data.meals];
+          }
+        });
         console.log(response.data.meals);
 
       } catch (error) {
@@ -25,6 +33,8 @@ const ProductPage = () => {
 
     // Call fetchData immediately
     fetchData('b');
+    fetchData('c');
+    fetchData('e');
 
   }, [])
 
@@ -53,7 +63,7 @@ const ProductPage = () => {
 
       <div className="small-container">
         <div className="row row-2">
-          <h2>All Products</h2>
+          <h2 className='allprod'>All Products</h2>
           <select>
             <option value="">Default Shorting</option>
             <option value="">Short by price</option>
@@ -129,50 +139,9 @@ const ProductPage = () => {
 
       </div>
 
-      <div className="footer">
-        <div className="container">
-          <div className="row">
-            <div className="footer-col-1">
-              <h3>Download Our App</h3>
-              <p>Download App for Android and iso mobile phone.</p>
-              <div className="app-logo">
-                <img src="https://i.ibb.co/KbPTYYQ/play-store.png" alt="" />
-                <img src="https://i.ibb.co/hVM4X2p/app-store.png" alt="" />
-              </div>
-            </div>
+      <Footer/>
 
-            <div className="footer-col-2">
-              <img src="https://i.ibb.co/j3FNGj7/logo-white.png" alt="" />
-              <p>
-                Our Purpose Is To Sustainably Make the Pleasure and Benefits of
-                Sports Accessible to the Many.
-              </p>
-            </div>
 
-            <div className="footer-col-3">
-              <h3>Useful Links</h3>
-              <ul>
-                <li>Coupons</li>
-                <li>Blog Post</li>
-                <li>Return Policy</li>
-                <li>Join Affiliate</li>
-              </ul>
-            </div>
-
-            <div className="footer-col-4">
-              <h3>Follow us</h3>
-              <ul>
-                <li>Facebook</li>
-                <li>Twitter</li>
-                <li>Instagram</li>
-                <li>YouTube</li>
-              </ul>
-            </div>
-          </div>
-          <hr />
-          <p className="copyright">Copyright &copy; 2021 - Red Store</p>
-        </div>
-      </div>
     </div>
   )
 }

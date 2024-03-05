@@ -664,6 +664,10 @@
    object-fit: cover;
    object-position: center;
 }
+.allprod{
+padding-left: -20px;
+}
+
 
 .card__info {
    display: flex;
@@ -781,3 +785,9 @@ background-color: #ff523b;
 
 
 
+.logo{
+  width: 200px;
+  position: absolute;
+  top: 2px;
+  left: 50px;
+}

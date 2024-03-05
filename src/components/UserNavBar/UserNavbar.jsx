@@ -1,7 +1,7 @@
 import React from 'react'
 import '../ProductsPage/ProductPage.css'
 import { useNavigate } from 'react-router-dom'
-
+import logo from '../../assets/logo.png'
 const UserNavbar = () => {
 
        const navigate = useNavigate()
@@ -11,7 +11,7 @@ const UserNavbar = () => {
       <div className="navcontainer">
         <div className="navbar">
           <div className="logo">
-           <h1>FOOD ZONE</h1>
+           <img src={logo} className='logo' alt="" />
           </div>
           <nav>
             <ul id="MenuItems">
