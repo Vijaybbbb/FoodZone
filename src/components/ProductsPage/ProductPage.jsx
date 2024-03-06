@@ -4,19 +4,24 @@ import './ProductPage.css';
 import axios from 'axios';
 import UserNavbar from '../UserNavBar/UserNavbar.jsx';
 import Footer from '../Footer/Footer.jsx';
-
+import { useNavigate } from 'react-router-dom';
+import { singleProduct } from '../../Redux/selecteditemSlice.jsx';
+import { useDispatch } from 'react-redux';
 
 const ProductPage = () => {
 
   const [item, setItem] = useState();
   const [page, setPage] = useState(1)
 
+  const navigate = useNavigate()
+
+  const dispatch = useDispatch()
+
   useEffect(() => {
     const fetchData = async (category) => {
       try {
         const response = await axios.get(`https://www.themealdb.com/api/json/v1/1/search.php?f=${category}`);
-
-        // setItem(response.data.meals)
+        console.log(response.data.meals)
         setItem(prevData => {
           if (prevData === undefined) {
             return [...response.data.meals];
@@ -76,9 +81,19 @@ const ProductPage = () => {
 
         <div className="container">
           <div className="art-board">
-            <div className="art-board__container">
+            <div className="art-board__container" >
               {item && item.slice(page * 12 - 12, page * 12).map((data, index) => (
-                <div className="card" key={index}>
+                <div className="card" onClick={()=>{
+                              navigate(`/productview/${data.idMeal}`)
+                              dispatch(singleProduct(
+                                {id:data?.idMeal,
+                                  name:data?.strMeal,
+                                  img:data?.strMealThumb,
+                                  details:data?.strInstructions,
+                                  price:getPrice(data.idMeal)
+                              }))
+                              
+                              }} key={index}>
                   <div className="card__image">
                     <img src={data.strMealThumb} alt="Meal" />
                   </div>
