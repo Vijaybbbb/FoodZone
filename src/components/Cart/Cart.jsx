@@ -1,72 +1,71 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './Cart.css'
-
+import UserNavbar from '../UserNavBar/UserNavbar'
+import Footer from '../Footer/Footer'
+import { useSelector } from 'react-redux'
 
 
 const Cart = () => {
-          
+
+       const cartData = useSelector(state => state.cart.cart)
+       const [count,setCount] = useState({})
+       const [singleProductTotal,setsingleProductTotal] = useState(null)
+       const [subtotal,setSubtotal]  = useState(null)
+       const [total,setTotal] = useState(null)
+
        return (
               <div>
-                     <div className="small-container cart-page">
-                            <table>
+              <UserNavbar />
+               <div className="small-container cart-page">
+                     
+                     
+                     <table>
+                            <thead>
                                    <tr>
                                           <th>Product</th>
                                           <th>Quantity</th>
                                           <th>Subtotal</th>
                                    </tr>
+                            </thead>
+                            {cartData && cartData.map((data)=>
+                            <tbody>
+                                   <tr>
+                                          <td>
+                                                 <div className="cart-info">
+                                                        <img src={data.img} alt="" />
+                                                        <div>
+                                                               <p>{data.name}</p>
+                                                               <small>Price ${data.price}</small>
+                                                               <br />
+                                                               <a href="#">Remove</a>
+                                                        </div>
+                                                 </div>
+                                          </td>
+                                          <td><input type="number" value={count} /></td>
+                                          <div className='btndiv'>
+                                                 <button className='btncount' onClick={()=>{
+                                                        setCount()
+                                                        setsingleProductTotal()
+                                                 }}>+</button>
 
-                                   <tr>
-                                          <td>
-                                                 <div className="cart-info">
-                                                        <img src="https://i.ibb.co/B3vYjvw/buy-1.jpg" alt="" />
-                                                        <div>
-                                                               <p>Red Printed T-Shirt</p>
-                                                               <small>Price ₹500.00</small>
-                                                               <br />
-                                                               <a href="#">Remove</a>
-                                                        </div>
-                                                 </div>
-                                          </td>
-                                          <td><input type="number" defaultValue="1" /></td>
-                                          <td>₹500.00</td>
-                                   </tr>
-                                   <tr>
-                                          <td>
-                                                 <div className="cart-info">
-                                                        <img src="https://i.ibb.co/qmSHWx7/buy-2.jpg" alt="" />
-                                                        <div>
-                                                               <p>HRX Shoes</p>
-                                                               <small>Price ₹1500.00</small>
-                                                               <br />
-                                                               <a href="#">Remove</a>
-                                                        </div>
-                                                 </div>
-                                          </td>
-                                          <td><input type="number" defaultValue="1" /></td>
-                                          <td>₹1500.00</td>
-                                   </tr>
-                                   <tr>
-                                          <td>
-                                                 <div className="cart-info">
-                                                        <img src="https://i.ibb.co/NyYtY31/buy-3.jpg" alt="" />
-                                                        <div>
-                                                               <p>Reebok Tracksuit</p>
-                                                               <small>Price ₹1500.00</small>
-                                                               <br />
-                                                               <a href="#">Remove</a>
-                                                        </div>
-                                                 </div>
-                                          </td>
-                                          <td><input type="number" defaultValue="1" /></td>
-                                          <td>₹1500.00</td>
-                                   </tr>
-                            </table>
 
-                            <div className="total-price">
-                                   <table>
+                                                 <button  className='btncount' onClick={()=>{
+                                                        setCount(count-1)
+                                                 }}>-</button>
+                                          </div>
+                                          <td>${singleProductTotal}</td>
+                                   </tr>
+                                  
+                            </tbody>
+                               )}
+                     </table>
+                  
+                     <div className="total-price">
+                            <table>
+                                   <tbody>
                                           <tr>
                                                  <td>Subtotal</td>
-                                                 <td>₹3500.00</td>
+                                                 <td>${subtotal}</td>
                                           </tr>
                                           <tr>
                                                  <td>Tax</td>
@@ -74,12 +73,15 @@ const Cart = () => {
                                           </tr>
                                           <tr>
                                                  <td>Total</td>
-                                                 <td>₹3515.00</td>
+                                                 <td>${total}</td>
                                           </tr>
-                                   </table>
-                            </div>
+                                   </tbody>
+                            </table>
                      </div>
+                     
               </div>
+              <Footer />
+       </div>
 
 
        )

@@ -6,6 +6,7 @@ import Home from './components/Home/Home'
 import ProductPage from './components/ProductsPage/ProductPage'
 import Profile from './components/Profile/Profile'
 import ProductView from './components/ProductView.jsx/ProductView'
+import Cart from './components/Cart/Cart'
 
 function App() {
 
@@ -33,6 +34,11 @@ function App() {
     {
       path:'productview/:id',
       element:<ProductView/>
+    }
+    ,{
+      path:'cart',
+      element:<Cart/>
+
     }
   ])
 
