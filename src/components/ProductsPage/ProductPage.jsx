@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import './Script.js';
 import './ProductPage.css';
 import axios from 'axios';
@@ -6,7 +6,7 @@ import UserNavbar from '../UserNavBar/UserNavbar.jsx';
 import Footer from '../Footer/Footer.jsx';
 import { useNavigate } from 'react-router-dom';
 import { singleProduct } from '../../Redux/selecteditemSlice.jsx';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {addToCart} from "../../Redux/cartSlice.jsx"
 
 const ProductPage = () => {
@@ -17,6 +17,11 @@ const ProductPage = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
+  //fetching cartData from Store
+  const cartData = useSelector(state => state.cart.cart)
+  const cartBtn = useRef()
+  
+  
   useEffect(() => {
 
     // Call fetchData immediately
@@ -31,7 +36,7 @@ const ProductPage = () => {
   const fetchData = async (category) => {
     try {
       const response = await axios.get(`https://www.themealdb.com/api/json/v1/1/search.php?f=${category}`);
-      console.log(response.data.meals)
+     // console.log(response.data.meals)
       setItem(prevData => {
         if (prevData === undefined) {
           return [...response.data.meals];
@@ -175,14 +180,19 @@ const ProductPage = () => {
                     </div>
                   </div>
 
-                  <button className="CartBtn" onClick={(e) => {
+                  <button ref={cartBtn} className="CartBtn" onClick={(e) => {
                     e.stopPropagation();
-                    dispatch(addToCart({
-                      id: data?.idMeal,
-                      name: data?.strMeal,
-                      img: data?.strMealThumb,
-                      price: getPrice(data.idMeal),
-                    }))
+                    if(cartData.find(item => item.id == data.idMeal)){
+                          navigate('/cart')
+                          cartBtn.style.backgroundColor= 'red'
+                    }else{
+                      dispatch(addToCart({
+                        id: data?.idMeal,
+                        name: data?.strMeal,
+                        img: data?.strMealThumb,
+                        price: getPrice(data.idMeal),
+                      }))
+                    }
 
 
                   }}>
