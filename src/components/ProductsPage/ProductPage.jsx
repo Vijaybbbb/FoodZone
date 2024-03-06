@@ -7,6 +7,7 @@ import Footer from '../Footer/Footer.jsx';
 import { useNavigate } from 'react-router-dom';
 import { singleProduct } from '../../Redux/selecteditemSlice.jsx';
 import { useDispatch } from 'react-redux';
+import {addToCart} from "../../Redux/cartSlice.jsx"
 
 const ProductPage = () => {
 
@@ -30,7 +31,7 @@ const ProductPage = () => {
   const fetchData = async (category) => {
     try {
       const response = await axios.get(`https://www.themealdb.com/api/json/v1/1/search.php?f=${category}`);
-      //console.log(response.data.meals)
+      console.log(response.data.meals)
       setItem(prevData => {
         if (prevData === undefined) {
           return [...response.data.meals];
@@ -72,7 +73,17 @@ const ProductPage = () => {
   //sorting function
   function sortData(event) {
     const value = event.target.value
+    if (value == 'HightoLow') {
+      const sortedData = [...item].sort((a, b) => getPrice(b.idMeal) - getPrice(a.idMeal));
+      setItem(sortedData)
+    }
+    else if (value == 'Lowtohigh') {
+      const sortedData = [...item].sort((a, b) => getPrice(a.idMeal) - getPrice(b.idMeal));
+      setItem(sortedData)
+    }
+    else {
 
+    }
 
   }
 
@@ -81,19 +92,19 @@ const ProductPage = () => {
     const value = event.target.value
 
     try {
-      if(value=='Default'){
+      if (value == 'Default') {
         fetchData('b');
         fetchData('c');
         fetchData('e');
-    
+
       }
-      else{
+      else {
         const response = await axios.get(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${value}`);
         setItem(response.data.meals)
       }
-      
-    }catch (error) {
-        console.log(error);
+
+    } catch (error) {
+      console.log(error);
     }
   }
 
@@ -133,6 +144,7 @@ const ProductPage = () => {
           <div className="art-board">
             <div className="art-board__container" >
               {item && item.slice(page * 12 - 12, page * 12).map((data, index) => (
+
                 <div className="card" onClick={() => {
                   navigate(`/productview/${data.idMeal}`)
                   dispatch(singleProduct(
@@ -163,7 +175,17 @@ const ProductPage = () => {
                     </div>
                   </div>
 
-                  <button className="CartBtn">
+                  <button className="CartBtn" onClick={(e) => {
+                    e.stopPropagation();
+                    dispatch(addToCart({
+                      id: data?.idMeal,
+                      name: data?.strMeal,
+                      img: data?.strMealThumb,
+                      price: getPrice(data.idMeal),
+                    }))
+
+
+                  }}>
                     <span className="IconContainer">
                       <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512" fill="rgb(17, 17, 17)" class="cart"><path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"></path></svg>
                     </span>

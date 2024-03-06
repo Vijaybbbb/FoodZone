@@ -24,6 +24,7 @@ import storage from 'redux-persist/lib/storage'
 
 import LoginStatus from './loginSlice'
 import  singleProduct  from "./selecteditemSlice";
+import cart from './cartSlice'
 
 const persistConfig = {
   key: 'root',
@@ -32,7 +33,8 @@ const persistConfig = {
 }
 const rootReducer = combineReducers({
        userData:LoginStatus,
-       selectedProduct:singleProduct
+       selectedProduct:singleProduct,
+       cart:cart
 })
 
 const persistedReducer = persistReducer(persistConfig,rootReducer)
