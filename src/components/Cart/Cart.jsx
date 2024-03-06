@@ -8,10 +8,32 @@ import { useSelector } from 'react-redux'
 const Cart = () => {
 
        const cartData = useSelector(state => state.cart.cart)
-       const [count,setCount] = useState({})
-       const [singleProductTotal,setsingleProductTotal] = useState(null)
+       const [count,setCount] = useState(cartData)
+       const [singleProductTotal,setSingleProductTotal] = useState(null)
        const [subtotal,setSubtotal]  = useState(null)
        const [total,setTotal] = useState(null)
+
+
+
+
+       const handleIncrement = (id) => {
+              setCount(prevCount => ({
+                ...prevCount,
+                [id]: (prevCount[id] || 1) + 1
+              }));
+              
+            };
+          
+        const handleDecrement = (id) => {
+              setCount(prevCount => ({
+                ...prevCount,
+                [id]: Math.max((prevCount[id] || 0) - 1, 1)
+              }));
+            };
+       
+
+
+
 
        return (
               <div>
@@ -24,10 +46,12 @@ const Cart = () => {
                                    <tr>
                                           <th>Product</th>
                                           <th>Quantity</th>
+                                          <th></th>
                                           <th>Subtotal</th>
                                    </tr>
                             </thead>
                             {cartData && cartData.map((data)=>
+                                   
                             <tbody>
                                    <tr>
                                           <td>
@@ -41,16 +65,17 @@ const Cart = () => {
                                                         </div>
                                                  </div>
                                           </td>
-                                          <td><input type="number" value={count} /></td>
+                                          <td><input type="number" value={count[data.id] || 1} /></td>
                                           <div className='btndiv'>
                                                  <button className='btncount' onClick={()=>{
-                                                        setCount()
-                                                        setsingleProductTotal()
+                                                        handleIncrement(data.id)
+                                                        setSingleProductTotal((count[data.id] || 1) * data.price)
+                                                        
                                                  }}>+</button>
 
 
                                                  <button  className='btncount' onClick={()=>{
-                                                        setCount(count-1)
+                                                        handleDecrement(data.id)
                                                  }}>-</button>
                                           </div>
                                           <td>${singleProductTotal}</td>

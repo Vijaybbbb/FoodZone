@@ -3,6 +3,7 @@ import './Home.css'
 import './Script.js'
 import Navbar from '../Navabar/Navbar.jsx';
 import Banner from '../Banner/Banner.jsx';
+import Footer from '../Footer/Footer.jsx';
 
 
 
@@ -15,6 +16,7 @@ const Home = () => {
       <div className="copyrightText">
         <p>Copyright 2021. All rights are reserved</p>
       </div>
+      <Footer/>
     </body>
   );
 };

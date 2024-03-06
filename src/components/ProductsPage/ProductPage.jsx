@@ -117,7 +117,7 @@ const ProductPage = () => {
 
 
   return (
-    <div>
+    <div className='card-contanier'>
       <UserNavbar />
 
       <div className="small-container">
