@@ -14,27 +14,9 @@ const ProductPage = () => {
   const [page, setPage] = useState(1)
 
   const navigate = useNavigate()
-
   const dispatch = useDispatch()
 
   useEffect(() => {
-    const fetchData = async (category) => {
-      try {
-        const response = await axios.get(`https://www.themealdb.com/api/json/v1/1/search.php?f=${category}`);
-        console.log(response.data.meals)
-        setItem(prevData => {
-          if (prevData === undefined) {
-            return [...response.data.meals];
-          } else {
-            return [...prevData, ...response.data.meals];
-          }
-        });
-      
-
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
-    };
 
     // Call fetchData immediately
     fetchData('b');
@@ -42,6 +24,29 @@ const ProductPage = () => {
     fetchData('e');
 
   }, [])
+
+  //fetch Data for initial Rendering
+
+  const fetchData = async (category) => {
+    try {
+      const response = await axios.get(`https://www.themealdb.com/api/json/v1/1/search.php?f=${category}`);
+      //console.log(response.data.meals)
+      setItem(prevData => {
+        if (prevData === undefined) {
+          return [...response.data.meals];
+        } else {
+          return [...prevData, ...response.data.meals];
+        }
+      });
+
+
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  };
+
+
+
 
 
   //function for indicate pagination
@@ -54,12 +59,45 @@ const ProductPage = () => {
       setPage(selectedPage)
   }
 
+
+
   //generate Price For product
   function getPrice(id) {
     const str = String(id);
     return str[0] + str[2] + str[str.length - 1]
 
   }
+
+
+  //sorting function
+  function sortData(event) {
+    const value = event.target.value
+
+
+  }
+
+  //Filter Function
+  async function filterData(event) {
+    const value = event.target.value
+
+    try {
+      if(value=='Default'){
+        fetchData('b');
+        fetchData('c');
+        fetchData('e');
+    
+      }
+      else{
+        const response = await axios.get(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${value}`);
+        setItem(response.data.meals)
+      }
+      
+    }catch (error) {
+        console.log(error);
+    }
+  }
+
+
 
 
   return (
@@ -69,13 +107,25 @@ const ProductPage = () => {
       <div className="small-container">
         <div className="row row-2">
           <h2 className='allprod'>All Products</h2>
-          <select>
-            <option value="">Default Shorting</option>
-            <option value="">Short by price</option>
-            <option value="">Short by popularity</option>
-            <option value="">Short by rating</option>
-            <option value="">Short by sale</option>
-          </select>
+          <div>
+            <select onChange={sortData} name='sort'>
+              <option value="" selected disabled >Sort</option>
+              <option value="HightoLow">PRICE: High to Low</option>
+              <option value="Lowtohigh">PRICE: Low  to high</option>
+              <option value="Popularity">Popularity</option>
+            </select>
+            <select onChange={filterData} name='filter'>
+              <option value="" selected disabled >Filter</option>
+              <option value="Vegetarian">Vegetarian</option>
+              <option value="Beef">Beef</option>
+              <option value="Chicken">Chicken</option>
+              <option value="Breakfast">Breakfast</option>
+              <option value="Dessert">Dessert</option>
+              <option value="Default">Default</option>
+
+            </select>
+          </div>
+
         </div>
 
 
@@ -83,17 +133,18 @@ const ProductPage = () => {
           <div className="art-board">
             <div className="art-board__container" >
               {item && item.slice(page * 12 - 12, page * 12).map((data, index) => (
-                <div className="card" onClick={()=>{
-                              navigate(`/productview/${data.idMeal}`)
-                              dispatch(singleProduct(
-                                {id:data?.idMeal,
-                                  name:data?.strMeal,
-                                  img:data?.strMealThumb,
-                                  details:data?.strInstructions,
-                                  price:getPrice(data.idMeal)
-                              }))
-                              
-                              }} key={index}>
+                <div className="card" onClick={() => {
+                  navigate(`/productview/${data.idMeal}`)
+                  dispatch(singleProduct(
+                    {
+                      id: data?.idMeal,
+                      name: data?.strMeal,
+                      img: data?.strMealThumb,
+                      details: data?.strInstructions,
+                      price: getPrice(data.idMeal)
+                    }))
+
+                }} key={index}>
                   <div className="card__image">
                     <img src={data.strMealThumb} alt="Meal" />
                   </div>
@@ -119,7 +170,7 @@ const ProductPage = () => {
                     <p className="text">Add to Cart</p>
                   </button>
 
-                
+
 
 
                   <p className='price'>${getPrice(data.idMeal)}</p>
@@ -154,7 +205,7 @@ const ProductPage = () => {
 
       </div>
 
-      <Footer/>
+      <Footer />
 
 
     </div>

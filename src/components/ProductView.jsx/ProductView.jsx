@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import UserNavbar from '../UserNavBar/UserNavbar'
 import Footer from '../Footer/Footer'
 import { useParams } from 'react-router-dom'
@@ -6,8 +6,10 @@ import { useSelector } from 'react-redux'
 
 const ProductView = () => {
 
+
   const id  = useParams() 
-  const productData  = useSelector(state => state.product.productData)
+  const productData  = useSelector(state => state.selectedProduct.productData)
+
   return (
     <div>
       <UserNavbar/>
