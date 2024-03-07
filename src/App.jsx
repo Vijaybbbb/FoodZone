@@ -7,6 +7,7 @@ import ProductPage from './components/ProductsPage/ProductPage'
 import Profile from './components/Profile/Profile'
 import ProductView from './components/ProductView.jsx/ProductView'
 import Cart from './components/Cart/Cart'
+import PaymentPage from './components/Payment/PaymentPage'
 
 function App() {
 
@@ -39,6 +40,10 @@ function App() {
       path:'cart',
       element:<Cart/>
 
+    },
+    {
+      path:"payment",
+      element:<PaymentPage/>
     }
   ])
 
