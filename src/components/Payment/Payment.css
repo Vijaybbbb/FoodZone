@@ -1,0 +1,74 @@
+html {
+       font-size: 16px;
+   }
+   
+   :root {
+       --brand_blue: #4256C0;
+       --white: #ffffff;
+       --grey: #8c8c8c;
+       --grey_light: #b7b7b7;
+       --grey_lighter: #f8f8f8;
+       
+       font-family: 'Roboto', sans-serif;
+   }
+   ::placeholder {
+       color: var(--grey_light);
+       font-weight: 400;
+   }
+   
+   div > label{
+       font-weight: 400; 
+       font-size: 0.75rem; 
+       padding: 0.5rem;
+       color: var(--grey);
+       text-transform: uppercase;
+   }
+   
+   div > input, div > select{
+       box-sizing: border-box;
+       padding:0.5rem; 
+       font-size: 0.875rem;
+       line-height: 1rem; 
+       border: 1px solid var(--grey_light); 
+       border-radius: 3px; 
+       color: var(--brand_blue); 
+       font-weight: 400;
+   }
+   button {
+       height: 3rem;
+       color: var(--white);
+       background-color: var(--brand_blue);
+       font-size: 1rem;
+       text-transform: uppercase;
+       border: none;
+       border-radius: 3px;
+       padding: 1rem;
+       width: 100%;
+   }
+   
+   h1{
+       color: var(--white);
+       font-weight: 500;
+       padding: 0;
+       margin: 0;
+       font-size: 1.5rem;
+   }
+   p{
+       color: var(--white);
+       padding: 0.5rem 0 0 0;
+       margin: 0;
+       font-size: 0.875rem;
+       font-weight: 400;
+       letter-spacing: 0.08rem;
+   }
+           
+   select > option{
+       color: var(--brand_blue); 
+   }
+
+   .container{
+
+   }
+   .card{
+       height: 600px;
+   }
