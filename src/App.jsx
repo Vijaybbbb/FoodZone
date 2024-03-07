@@ -8,6 +8,7 @@ import Profile from './components/Profile/Profile'
 import ProductView from './components/ProductView.jsx/ProductView'
 import Cart from './components/Cart/Cart'
 import PaymentPage from './components/Payment/PaymentPage'
+import SucessPage from './components/Sucess/SucessPage'
 
 function App() {
 
@@ -44,6 +45,10 @@ function App() {
     {
       path:"payment",
       element:<PaymentPage/>
+    },
+    {
+      path:'success',
+      element:<SucessPage/>
     }
   ])
 
