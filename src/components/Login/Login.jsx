@@ -11,7 +11,8 @@ const Login = () => {
        const navigate = useNavigate()
        const [email,setEmail] = useState()
        const [password,setPassword] = useState()
-        const dispatch = useDispatch()
+       const[isLoading,setIsLoading] = useState(true)
+       const dispatch = useDispatch()
 
        function handleLogin(){
             signInWithEmailAndPassword(auth,email,password).then(()=>{

@@ -8,14 +8,17 @@ import { useNavigate } from 'react-router-dom';
 import { singleProduct } from '../../Redux/selecteditemSlice.jsx';
 import { useDispatch, useSelector } from 'react-redux';
 import {addToCart} from "../../Redux/cartSlice.jsx"
+import { useQuery } from '@tanstack/react-query';
 
 const ProductPage = () => {
 
   const [item, setItem] = useState();
   const [page, setPage] = useState(1)
+  const[isLoading,setIsLoading] = useState(true)
 
   const navigate = useNavigate()
   const dispatch = useDispatch()
+
 
   //fetching cartData from Store
   const cartData = useSelector(state => state.cart.cart)
@@ -24,13 +27,15 @@ const ProductPage = () => {
   
   useEffect(() => {
     // Call fetchData immediately
-   
-
-    fetchData('b');
+    setTimeout(()=>{
+      fetchData('b');
     fetchData('c');
     fetchData('e');
-
+    },1000)
   }, [])
+
+
+
 
   //fetch Data for initial Rendering
 
@@ -45,7 +50,7 @@ const ProductPage = () => {
           return [...prevData, ...response.data.meals];
         }
       });
-
+      setIsLoading(false)
 
     } catch (error) {
       console.error('Error fetching data:', error);
@@ -80,12 +85,16 @@ const ProductPage = () => {
   function sortData(event) {
     const value = event.target.value
     if (value == 'HightoLow') {
+      
       const sortedData = [...item].sort((a, b) => getPrice(b.idMeal) - getPrice(a.idMeal));
       setItem(sortedData)
+     
     }
     else if (value == 'Lowtohigh') {
+      
       const sortedData = [...item].sort((a, b) => getPrice(a.idMeal) - getPrice(b.idMeal));
       setItem(sortedData)
+      
     }
     else {
 
@@ -105,8 +114,10 @@ const ProductPage = () => {
 
       }
       else {
+        setIsLoading(true)
         const response = await axios.get(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${value}`);
         setItem(response.data.meals)
+        setIsLoading(false)
       }
 
     } catch (error) {
@@ -118,6 +129,26 @@ const ProductPage = () => {
 
 
   return (
+  <div>
+      {isLoading ? (
+        <div>
+        <UserNavbar/>
+        <div className='loadingContainer'>
+        <div className='loading'>
+        <div class="dot-spinner">
+        <div class="dot-spinner__dot"></div>
+        <div class="dot-spinner__dot"></div>
+        <div class="dot-spinner__dot"></div>
+        <div class="dot-spinner__dot"></div>
+        <div class="dot-spinner__dot"></div>
+        <div class="dot-spinner__dot"></div>
+        <div class="dot-spinner__dot"></div>
+        <div class="dot-spinner__dot"></div>
+        </div>
+        </div>
+      </div>
+      <Footer/>
+      </div>) :(
     <div className='card-contanier'>
       <UserNavbar />
 
@@ -239,9 +270,9 @@ const ProductPage = () => {
       </div>
 
       <Footer />
-
-
     </div>
+  )}
+  </div>
   )
 }
 
