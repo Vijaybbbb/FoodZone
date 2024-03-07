@@ -23,8 +23,9 @@ const ProductPage = () => {
   
   
   useEffect(() => {
-
     // Call fetchData immediately
+   
+
     fetchData('b');
     fetchData('c');
     fetchData('e');

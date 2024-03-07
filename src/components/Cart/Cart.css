@@ -111,6 +111,7 @@ p {
   margin: auto;
   padding-left: 25px;
   padding-right: 25px;
+  
 }
 
 .col-4 {
@@ -442,6 +443,7 @@ input:focus {
 
 .cart-page {
   margin: 90px auto;
+ 
 }
 
 table {
@@ -707,4 +709,55 @@ form a {
 .paymentbtn{
   margin-left: 900px;
    margin-top: 30px;
+}
+
+/* .empty-cart-message{
+  height: 600px;
+  width: 100px;
+  text-align: center;
+}
+
+.cartempty{
+  position: absolute;
+  margin-left: 600px;
+  margin-top: 78px;
+  padding-top: 120px;
+
+} */
+
+div#oxy-shopping-cart-wrapper {
+  background: #fff;
+  max-width: 960px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 48px;
+  height: 600px;
+  margin-left: 280px;
+  margin-top: 200px;
+}
+
+div#oxy-shopping-cart-wrapper p {
+  text-align: center;
+  color: #666;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+div#oxy-shopping-cart-wrapper a {
+  color: #00ADEF;
+  font-weight: bold;
+  text-decoration: none;
+  letter-spacing: 1px;
+  font-size: 16px;
+  line-height: 24px;
+  padding: 18px 32px;
+  border: 1px solid #00ADEF;
+  transition: all ease 0.2s;
+  margin-bottom: 12px;
+}
+
+div#oxy-shopping-cart-wrapper a:hover {
+  color: #085888;
+  border: 1px solid #085888;
 }

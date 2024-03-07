@@ -3,6 +3,7 @@ import './Cart.css';
 import UserNavbar from '../UserNavBar/UserNavbar';
 import Footer from '../Footer/Footer';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 const Cart = () => {
   const cartData = useSelector(state => state.cart.cart);
@@ -11,6 +12,7 @@ const Cart = () => {
   const [subtotal, setSubtotal] = useState(null);
   const [total, setTotal] = useState(null);
   const [updatedCart, setUpdatedCart] = useState([]);
+  const navigate = useNavigate()
 
   useEffect(() => {
     setUpdatedCart(cartData);
@@ -71,7 +73,14 @@ const Cart = () => {
   return (
     <div>
       <UserNavbar />
+      {updatedCart.length === 0 ? (
+                       <div id='oxy-shopping-cart-wrapper'>
+                              <p>Cart Empty</p><br />
+                              <a href='' onClick={()=>{navigate('/products')}}>RETURN TO SHOP</a>
+                       </div>
+                       ) : (
       <div className="small-container cart-page">
+      
         <table>
           <thead>
             <tr>
@@ -114,6 +123,7 @@ const Cart = () => {
             </tbody>
           )}
         </table>
+        
         <div className="total-price">
           <table>
             <tbody>
@@ -149,9 +159,11 @@ const Cart = () => {
 
 
                        </div>
-
+        
       </div>
+        )}
       <Footer />
+       
     </div>
   );
 };

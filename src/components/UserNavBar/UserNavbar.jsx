@@ -16,7 +16,7 @@ const UserNavbar = () => {
           <nav>
             <ul id="MenuItems">
               <li><a href="" onClick={()=>{navigate('/home')}}>Home</a></li>
-              <li><a href="">Products</a></li>
+              <li><a href="" onClick={()=>{navigate('/products')}}>Products</a></li>
               <li><a href="">My Orders</a></li>
               <li><a href="">Wishlist</a></li>
               <li><a href="" onClick={()=>{navigate('/profile')}} >Account</a></li>
