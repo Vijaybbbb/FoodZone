@@ -1,9 +1,11 @@
 import React from 'react'
 import './Payment.css'
+
+
 const PaymentPage = () => {
   return (
     <div className='container'>
-              <div className='card' style={{ display: 'flex', width: '481px', margin: '20px auto',height:'680px'}}>
+              <div className='card' style={{ display: 'flex', width: '5000px', margin: '20px auto',height:'680px'}}>
             <form id="survey-form" style={{ width: '30rem', boxShadow: '0px 4px 4px rgba(102, 102, 102, 0.25)', borderRadius: '3px' }}>
                 {/* Header */}
                 <section style={{marginBottom:'-10px', display: 'flex', flexDirection: 'column', backgroundColor: 'var(--brand_blue)', padding: '1rem', height: '6rem', borderRadius: '3px 3px 0 0' }}>
