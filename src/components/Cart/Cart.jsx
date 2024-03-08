@@ -204,14 +204,16 @@ const Cart = () => {
           <a href='#' onClick={() => { navigate('/products') }}>RETURN TO SHOP</a>
         </div>
       ) : (
-        <div className="small-container cart-page">
+        <div className=" cart-page">
           <table>
             <thead>
               <tr>
+                
                 <th>Product</th>
-                <th>Quantity</th>
+                
+                <th style={{textAlign:"justify"}}>Quantity</th>
                 <th></th>
-                <th>Subtotal</th>
+                <th style={{textAlign:'right'}}>Subtotal</th>
               </tr>
             </thead>
             {updatedCart && updatedCart.map((data) =>
@@ -222,12 +224,13 @@ const Cart = () => {
                       <img src={data.img} alt="" />
                       <div>
                         <p>{data.name}</p>
-                        <small>Price ${data.price}</small>
+                        <div className='priceamt'>${(count[data.id] || 1) * data.price}</div>
+
                         <br />
                         <label className='label' onClick={() => { removeProduct(data.id) }}>Remove</label>
                       </div>
                     </div>
-                  </td>
+                  </td> 
                   <td>
                     <div className='btndiv'>
                       <button className='btncount' onClick={() => {
@@ -238,26 +241,26 @@ const Cart = () => {
                         handleDecrement(data.id);
                       }}>-</button>
                     </div>
-                  </td>
-                  <td>${(count[data.id] || 1) * data.price}</td>
+                  </td><td></td>
+                  <td style={{textAlign:'right'}}>${(count[data.id] || 1) * data.price}</td>
                 </tr>
               </tbody>
             )}
           </table>
-          <div className="total-price">
+          <div className="total-price" style={{marginLeft:'50px'}}>
             <table>
               <tbody>
                 <tr>
                   <td>Subtotal</td>
-                  <td>${subtotal}</td>
+                  <td style={{textAlign:'right'}}>${subtotal}</td>
                 </tr>
                 <tr>
                   <td>Tax</td>
-                  <td>₹15.00</td>
+                  <td style={{textAlign:'right'}}>₹15.00</td>
                 </tr>
                 <tr>
                   <td>Total</td>
-                  <td>${total}</td>
+                  <td style={{textAlign:'right'}}>${total}</td>
                 </tr>
               </tbody>
             </table>
