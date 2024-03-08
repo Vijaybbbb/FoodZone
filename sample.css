@@ -1,4 +1,4 @@
-
+/* 
      
      body {
        font-family: "Poppins", sans-serif;
@@ -166,7 +166,7 @@
      
      /* Offer */
      
-     .offer {
+     /* .offer {
        background: radial-gradient(#fff, #ffd6d6);
        margin-top: 80px;
        padding: 30px 0;
@@ -178,11 +178,11 @@
      
      small {
        color: #555;
-     }
+     } */
      
      /* testimonial */
      
-     .testimonial {
+     /* .testimonial {
        padding-top: 100px;
      }
      
@@ -240,11 +240,11 @@
        cursor: pointer;
        filter: grayscale(0);
      }
-     
+      */
      
      /* media query for menu */
      
-     @media only screen and (max-width: 800px) {
+     /* @media only screen and (max-width: 800px) {
        nav ul {
          position: absolute;
          top: 70px;
@@ -268,11 +268,11 @@
          display: block;
          cursor: pointer;
        }
-     }
+     } */
      
      /* all products page */
      
-     .row-2 {
+     /* .row-2 {
        justify-content: space-between;
        margin: 100px auto 50px;
      }
@@ -309,13 +309,13 @@
        background: #ff523b;
        color: #ffffff;
      }
-     
+      */
      
     
    
      /* media query for less than 600 screen size */
      
-     @media only screen and (max-width: 600px) {
+     /* @media only screen and (max-width: 600px) {
        .row {
          text-align: center;
        }
@@ -626,7 +626,10 @@ background-color: #ff523b;
 .loading{
   margin-left: 750px;
   margin-top: 300px;
-}
+} */
+
+
+ 
 
 
 
@@ -647,22 +650,20 @@ background-color: #ff523b;
 
 
 
-  {/* Pagination */}
 
-       {/* <div style={{marginTop:'220px',marginLeft:'120px', alignItems:'center',display:'flex',justifyContent:'center' ,width:"100%"}}>
-        {item && item.length > 0 && (
-          <div className="page-btn">
-            <span onClick={() => { selectedPage(page - 1) }}>{'<'}</span>
-            {[...Array(Math.ceil(item.length / 12))].map((_, i) => (
-              <span
-                key={i + 1}
-                onClick={() => { selectedPage(i + 1) }}
-                className={page === i + 1 ? 'pagination_selected' : ''}
 
-              >{i + 1}</span>
-            ))}
-            <span onClick={() => { selectedPage(page + 1) }}>{'>'}</span>
 
-          </div>
-        )}
-      </div> */}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

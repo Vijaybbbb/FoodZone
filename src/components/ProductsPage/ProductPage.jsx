@@ -3,11 +3,12 @@ import React, { useEffect, useRef, useState } from 'react';
 import './ProductPage.css';
 import axios from 'axios';
 import UserNavbar from '../UserNavBar/UserNavbar.jsx';
-import Footer from '../Footer/Footer.jsx';
+
 import { useNavigate } from 'react-router-dom';
 import { singleProduct } from '../../Redux/selecteditemSlice.jsx';
 import { useDispatch, useSelector } from 'react-redux';
 import {addToCart} from "../../Redux/cartSlice.jsx"
+import Footer from '../Footer/Footer.jsx';
 
 
 const ProductPage = () => {
@@ -29,8 +30,8 @@ const ProductPage = () => {
     // Call fetchData immediately
     setTimeout(()=>{
       fetchData('b');
-    fetchData('c');
-    fetchData('e');
+      fetchData('c');
+      fetchData('e');
     },1000)
   }, [])
 
@@ -42,7 +43,7 @@ const ProductPage = () => {
   const fetchData = async (category) => {
     try {
       const response = await axios.get(`https://www.themealdb.com/api/json/v1/1/search.php?f=${category}`);
-     // console.log(response.data.meals)
+      //console.log(response.data.meals)
       setItem(prevData => {
         if (prevData === undefined) {
           return [...response.data.meals];
@@ -53,7 +54,7 @@ const ProductPage = () => {
       setIsLoading(false)
 
     } catch (error) {
-      console.error('Error fetching data:', error);
+       console.log("check intrnet connection");
     }
   };
 
@@ -129,138 +130,153 @@ const ProductPage = () => {
 
 
   return (
-    <body>
-      
     
-  <div>
+      
+
+<div style={{backgroundColor:'white',height:'2000px'}}>
       {isLoading ? (
-        <div>
-        <UserNavbar/>
-        <div className='loadingContainer'>
-        <div className='loading'>
-        <div className="dot-spinner">
-        <div className="dot-spinner__dot"></div>
-        <div className="dot-spinner__dot"></div>
-        <div className="dot-spinner__dot"></div>
-        <div className="dot-spinner__dot"></div>
-        <div className="dot-spinner__dot"></div>
-        <div className="dot-spinner__dot"></div>
-        <div className="dot-spinner__dot"></div>
-        <div className="dot-spinner__dot"></div>
-        </div>
-        </div>
-  </div>
-      {/* <Footer/> */}
-      </div>) :(
-    <div style={{backgroundColor:'white',height:'1000px'}}>
-     <div className='card-contanier' style={{marginLeft:'-700px'}} >
-      <UserNavbar />
-      <div className="small-container" >
-        <div className="row row-2" style={{backgroundColor:'white'}}>
-         <h2 className='allprod'></h2>
-          <div style={{marginBottom:'50px',marginTop:'10px',marginRight:'30px',backgroundColor:'white'}}>
-           
-            <select onChange={sortData} name='sort'>
-              <option value="" selected disabled >Sort</option>
-              <option value="HightoLow">PRICE: High to Low</option>
-              <option value="Lowtohigh">PRICE: Low  to high</option>
-              <option value="Popularity">Popularity</option>
-            </select>
-            <select onChange={filterData} name='filter'>
-              <option value="" selected disabled >Filter</option>
-              <option value="Vegetarian">Vegetarian</option>
-              <option value="Beef">Beef</option>
-              <option value="Chicken">Chicken</option>
-              <option value="Breakfast">Breakfast</option>
-              <option value="Dessert">Dessert</option>
-              <option value="Default">Default</option>
-
-            </select>
+        <div style={{marginBottom:'1000px'}}>
+          <UserNavbar />
+          <div class="loader">
+            <div class="justify-content-center jimu-primary-loading"></div>
           </div>
+          {/* <Footer/> */}
+   </div>
+      ) : (
+   <div style={{ backgroundColor: 'white', height: '1000px'}}>
+          <div className='card-contanier' style={{ marginLeft: '-700px' }} >
+            <UserNavbar />
+            <div className="small-container" >
+              <div className="row row-2" style={{ backgroundColor: 'white' }}>
+                <h2 className='allprod'></h2>
+                <div style={{ marginBottom: '50px', marginTop: '10px', marginRight: '30px', backgroundColor: 'white' }}>
 
-        </div>
+                  <select onChange={sortData} name='sort'>
+                    <option value="" selected disabled >Sort</option>
+                    <option value="HightoLow">PRICE: High to Low</option>
+                    <option value="Lowtohigh">PRICE: Low  to high</option>
+                    <option value="Popularity">Popularity</option>
+                  </select>
+                  <select onChange={filterData} name='filter'>
+                    <option value="" selected disabled >Filter</option>
+                    <option value="Vegetarian">Vegetarian</option>
+                    <option value="Beef">Beef</option>
+                    <option value="Chicken">Chicken</option>
+                    <option value="Breakfast">Breakfast</option>
+                    <option value="Dessert">Dessert</option>
+                    <option value="Default">Default</option>
 
-
-        <div className="container" style={{backgroundColor:'white'}}>
-          <div className="art-board" style={{backgroundColor:'white'}}>
-            <div className="art-board__container" style={{backgroundColor:'white'}}>
-              {item && item.slice(page * 12 - 12, page * 12).map((data, index) => (
-
-                <div className="card"  onClick={() => {
-                  navigate(`/productview/${data.idMeal}`)
-                  dispatch(singleProduct(
-                    {
-                      id: data?.idMeal,
-                      name: data?.strMeal,
-                      img: data?.strMealThumb,
-                      details: data?.strInstructions,
-                      price: getPrice(data.idMeal)
-                    }))
-
-                }} key={index}>
-                  <div className="card__image">
-                    <img src={data.strMealThumb} alt="Meal" />
-                  </div>
-                  <div className="card__info">
-                    <div className="car__info--title">
-                      <h3>{data.strMeal}</h3>
-                      <p style={{color:'black'}}>Fresh & sweet</p>
-                    </div>
-                    <div className="card__info--price">
-
-                      <span className="fa fa-star checked"></span>
-                      <span className="fa fa-star checked"></span>
-                      <span className="fa fa-star checked"></span>
-                      <span className="fa fa-star checked"></span>
-                      <span className="fa fa-star checked"></span>
-                    </div>
-                  </div>
-
-                  <button ref={cartBtn} className="CartBtn" onClick={(e) => {
-                    e.stopPropagation();
-                    if(cartData.find(item => item.id == data.idMeal)){
-                          navigate('/cart')
-                          cartBtn.style.backgroundColor= 'red'
-                    }else{
-                      dispatch(addToCart({
-                        id: data?.idMeal,
-                        name: data?.strMeal,
-                        img: data?.strMealThumb,
-                        price: getPrice(data.idMeal),
-                      }))
-                    }
-
-
-                    }}>
-                    <span className="IconContainer">
-                      <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512" fill="rgb(17, 17, 17)" class="cart"><path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"></path></svg>
-                    </span>
-                    <p className="text">Add to Cart</p>
-                  </button>
-
-
-
-
-                  <p className='price' style={{color:'black'}}>${getPrice(data.idMeal)}</p>
+                  </select>
                 </div>
-              ))}
+
+              </div>
+
+
+              <div className="container" style={{ backgroundColor: 'white' }}>
+                <div className="art-board" style={{ backgroundColor: 'white' }}>
+                  <div className="art-board__container" style={{ backgroundColor: 'white' }}>
+                    {item && item.slice(page * 12 - 12, page * 12).map((data, index) => (
+
+                      <div className="card" onClick={() => {
+                        navigate(`/productview/${data.idMeal}`)
+                        dispatch(singleProduct(
+                          {
+                            id: data?.idMeal,
+                            name: data?.strMeal,
+                            img: data?.strMealThumb,
+                            details: data?.strInstructions,
+                            price: getPrice(data.idMeal)
+                          }))
+
+                      }} key={index}>
+                        <div className="card__image">
+                          <img src={data.strMealThumb} alt="Meal" />
+                        </div>
+                        <div className="card__info">
+                          <div className="car__info--title">
+                            <h3>{data.strMeal}</h3>
+                            <p style={{ color: 'black' }}>Fresh & sweet</p>
+                          </div>
+                          <div className="card__info--price">
+
+                            <span className="fa fa-star checked"></span>
+                            <span className="fa fa-star checked"></span>
+                            <span className="fa fa-star checked"></span>
+                            <span className="fa fa-star checked"></span>
+                            <span className="fa fa-star checked"></span>
+                          </div>
+                        </div>
+
+                        <button ref={cartBtn} className="CartBtn" onClick={(e) => {
+                          e.stopPropagation();
+                          if (cartData.find(item => item.id == data.idMeal)) {
+                            navigate('/cart')
+                            cartBtn.style.backgroundColor = 'red'
+                          } else {
+                            dispatch(addToCart({
+                              id: data?.idMeal,
+                              name: data?.strMeal,
+                              img: data?.strMealThumb,
+                              price: getPrice(data.idMeal),
+                            }))
+                          }
+
+
+                        }}>
+                          <span className="IconContainer">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512" fill="rgb(17, 17, 17)" class="cart"><path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"></path></svg>
+                          </span>
+                          <p className="text">Add to Cart</p>
+                        </button>
+
+
+
+
+                        <p className='price' style={{ color: 'black' }}>${getPrice(data.idMeal)}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
             </div>
+            
+
           </div>
+
+
+
         </div>
+        
 
-      </div>
-      
+         )}
+      <div style={{ width: '100%', height: '100px', backgroundColor: "white" }}>
 
+
+        <div style={{ marginTop: '220px', marginLeft: '10px', alignItems: 'center', display: 'flex', justifyContent: 'center', width: "100%" }}>
+          {item && item.length > 0 && (
+            <div className="page-btn">
+              <span onClick={() => { selectedPage(page - 1) }}>{'<'}</span>
+              {[...Array(Math.ceil(item.length / 12))].map((_, i) => (
+                <span
+                  key={i + 1}
+                  onClick={() => { selectedPage(i + 1) }}
+                  className={page === i + 1 ? 'pagination_selected' : ''}
+
+                >{i + 1}</span>
+              ))}
+              <span onClick={() => { selectedPage(page + 1) }}>{'>'}</span>
+
+            </div>
+          )}
+        </div>
       </div>
-      
-    
-    
+         <div style={{marginTop:'50px'}} className='footerbody'>
+              <Footer/>
+         </div>
+
     </div>
+   
 
-  </div> 
-  )}
-  </div>
-  </body>
   )
 }
 
