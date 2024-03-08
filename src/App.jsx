@@ -43,7 +43,7 @@ function App() {
 
     },
     {
-      path:"payment",
+      path:"payment/:total",
       element:<PaymentPage/>
     },
     {

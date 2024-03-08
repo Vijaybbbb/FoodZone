@@ -1,16 +1,23 @@
 import React from 'react'
 import './Payment.css' 
+import { useNavigate, useParams } from 'react-router-dom'
 
 
 const PaymentPage = () => {
+
+    const {total} = useParams()
+    console.log(total);
+    const navigate = useNavigate()
+
   return (
     <div>
       <div style={{ display: 'flex', width: '500px',display:'flex' ,alignItems:'center',marginLeft:'500px',marginTop:'20px' }}>
-            <form id="survey-form" style={{ width: '30rem', boxShadow: '0px 4px 4px rgba(102, 102, 102, 0.25)', borderRadius: '3px' }}>
+            <form id="survey-form" style={{ width: '35rem', boxShadow: '0px 4px 4px rgba(102, 102, 102, 0.25)', borderRadius: '3px' }}>
                 {/* Header */}
-                <section style={{ display: 'flex', flexDirection: 'column', backgroundColor: 'var(--brand_blue)', padding: '1rem', height: '6rem', borderRadius: '3px 3px 0 0' }}>
+                <section style={{ display: 'flex', flexDirection: 'column', backgroundColor: 'var(--brand_blue)', padding: '1rem', height: '7rem', borderRadius: '3px 3px 0 0' }}>
                     <h1 id="title">Payment Checkout</h1>
                     <p id="description">Checkout with Ease</p>
+                    <p id="description" style={{fontSize:'13px',marginTop:'10px'}}>Payable Amount : ${total}</p>
                 </section>
 
                 {/* Content */}
@@ -30,7 +37,7 @@ const PaymentPage = () => {
                     {/*  Number */}
                     <div style={{ padding: '1rem', display: 'flex', flexDirection: 'column',marginTop:"-30px" }}>
                         <label id="number-label" htmlFor="number">Mob Number</label>
-                        <input type="number" id="number" name="number" placeholder="xxxxxxxxxx" max="10" min="0" required />
+                        <input type="number" id="number" name="number" placeholder="xxxxxxxxxx" required />
                     </div>
                     <div style={{ padding: '1rem', display: 'flex', flexDirection: 'column',marginTop:"-30px" }}>
                         <label id="name-label" htmlFor="name">Address 1</label>
@@ -78,7 +85,9 @@ const PaymentPage = () => {
                 {/* Footer */}
                 <section style={{ padding: '1rem', display: 'flex', backgroundColor: 'var(--grey_lighter)',marginTop:"-50px" }}>
                     {/* Checkout Button */}
-                    <button id="submit" type="submit" value="Process Payment">Payment Checkout</button>
+                    <button id="submit" onClick={()=>{
+                        navigate('/success')
+                    }}>Payment Checkout</button>
                 </section>
 
                 {/* textarea */}

@@ -4,6 +4,12 @@ import UserNavbar from '../UserNavBar/UserNavbar';
 import Footer from '../Footer/Footer';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import styled from 'styled-components';
+
+const TableHeader=styled.th`
+background-color: green;
+
+`
 
 const Cart = () => {
   const cartData = useSelector(state => state.cart.cart);
@@ -261,7 +267,7 @@ const Cart = () => {
               setIsLoading(true);
               setTimeout(() => {
                 setIsLoading(false);
-                navigate('/payment');
+                navigate(`/payment/${total}`);  
               }, 4000);
             }}>
               <span>Proceed to Payment</span>
