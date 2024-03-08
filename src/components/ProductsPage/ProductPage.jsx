@@ -183,7 +183,7 @@ const ProductPage = () => {
             <div className="art-board__container" >
               {item && item.slice(page * 12 - 12, page * 12).map((data, index) => (
 
-                <div className="card" onClick={() => {
+                <div className="card"  onClick={() => {
                   navigate(`/productview/${data.idMeal}`)
                   dispatch(singleProduct(
                     {
