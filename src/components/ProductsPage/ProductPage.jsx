@@ -129,6 +129,9 @@ const ProductPage = () => {
 
 
   return (
+    <body>
+      
+    
   <div>
       {isLoading ? (
         <div>
@@ -147,15 +150,15 @@ const ProductPage = () => {
         </div>
         </div>
   </div>
-      <Footer/>
+      {/* <Footer/> */}
       </div>) :(
-    <div>
-    <div className='card-contanier' style={{marginLeft:'-700px'}} >
+    <div style={{backgroundColor:'white',height:'1000px'}}>
+     <div className='card-contanier' style={{marginLeft:'-700px'}} >
       <UserNavbar />
-      <div className="small-container">
-        <div className="row row-2">
-        <h2 className='allprod'></h2>
-          <div style={{marginBottom:'100px',marginTop:'-50px'}}>
+      <div className="small-container" >
+        <div className="row row-2" style={{backgroundColor:'white'}}>
+         <h2 className='allprod'></h2>
+          <div style={{marginBottom:'50px',marginTop:'10px',marginRight:'30px',backgroundColor:'white'}}>
            
             <select onChange={sortData} name='sort'>
               <option value="" selected disabled >Sort</option>
@@ -178,9 +181,9 @@ const ProductPage = () => {
         </div>
 
 
-        <div className="container">
-          <div className="art-board">
-            <div className="art-board__container" >
+        <div className="container" style={{backgroundColor:'white'}}>
+          <div className="art-board" style={{backgroundColor:'white'}}>
+            <div className="art-board__container" style={{backgroundColor:'white'}}>
               {item && item.slice(page * 12 - 12, page * 12).map((data, index) => (
 
                 <div className="card"  onClick={() => {
@@ -245,34 +248,19 @@ const ProductPage = () => {
           </div>
         </div>
 
-
-        {/* Pagination */}
+      </div>
+      
 
       </div>
-       <div style={{marginTop:'220px',marginLeft:'120px', alignItems:'center',display:'flex',justifyContent:'center' ,width:"100%"}}>
-        {item && item.length > 0 && (
-          <div className="page-btn">
-            <span onClick={() => { selectedPage(page - 1) }}>{'<'}</span>
-            {[...Array(Math.ceil(item.length / 12))].map((_, i) => (
-              <span
-                key={i + 1}
-                onClick={() => { selectedPage(i + 1) }}
-                className={page === i + 1 ? 'pagination_selected' : ''}
-
-              >{i + 1}</span>
-            ))}
-            <span onClick={() => { selectedPage(page + 1) }}>{'>'}</span>
-
-          </div>
-        )}
-      </div>
+      
+    
     
     </div>
-    <Footer/>
+
   </div> 
   )}
   </div>
-
+  </body>
   )
 }
 
