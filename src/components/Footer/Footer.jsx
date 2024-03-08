@@ -1,11 +1,11 @@
 import React from 'react'
-import '../ProductsPage/ProductPage.css'
+import './Footer.css'
 import logo from '../../assets/logo.png'
 
 const Footer = () => {
   return (
        <div className="footer">
-       <div className="container">
+       <div className="container" style={{marginTop:'-120px'}}>
          <div className="row">
            <div className="footer-col-1">
              <h3>Download Our App</h3>
