@@ -6,8 +6,8 @@ const ProductView = () => {
   return (
     <div className='singleProduct'>
         <div className="small-container single-product">
-      <div className="zrow">
-        <div className="zcol-2">
+      <div className="row">
+        <div className="col-2">
           <img src="https://i.ibb.co/1MydDzN/gallery-1.jpg" alt="" width="100%" id="ProductImg" />
           <div className="small-img-row">
             <div className="small-img-col">
