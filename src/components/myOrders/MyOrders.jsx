@@ -1,72 +1,72 @@
-import React from 'react'
-import './myOrders.css'
-import UserNavbar from '../UserNavBar/UserNavbar'
+import React from 'react';
+import './myOrders.css';
+import UserNavbar from '../UserNavBar/UserNavbar';
+import { useSelector } from 'react-redux';
+import Footer from '../Footer/Footer';
 
 const MyOrders = () => {
+  const orders = useSelector(state => state.userOrder.orderDetails);
+ console.log(orders);
   return (
-
-       <div>
-       <UserNavbar/>
-       <div class="small-container cart-page">
-              
-              <table>
-         <tr>
-           <th>Orders</th>
-           <th></th>
-           <th></th>
-         </tr>
-     
-         <tr>
-           <td>
-             <div class="cart-info">
-               <img src="https://i.ibb.co/B3vYjvw/buy-1.jpg" alt="" />
-               <div>
-                 <p>Red Printed T-Shirt</p>
-                 <small>Price ₹500.00</small>
-                 <br />
-                 <a href="#">Remove</a>
-               </div>
-             </div>
-           </td>
-           <td><input type="number" value="1" /></td>
-           <td>₹500.00</td>
-         </tr>
-         <tr>
-           <td>
-             <div class="cart-info">
-               <img src="https://i.ibb.co/qmSHWx7/buy-2.jpg" alt="" />
-               <div>
-                 <p>HRX Shoes</p>
-                 <small>Price ₹1500.00</small>
-                 <br />
-                 <a href="#">Remove</a>
-               </div>
-             </div>
-           </td>
-           <td><input type="number" value="1" /></td>
-           <td>₹1500.00</td>
-         </tr>
-         <tr>
-           <td>
-             <div class="cart-info">
-               <img src="https://i.ibb.co/NyYtY31/buy-3.jpg" alt="" />
-               <div>
-                 <p>Reebok Tracksuit</p>
-                 <small>Price ₹1500.00</small>
-                 <br />
-                 <a href="#">Remove</a>
-               </div>
-             </div>
-           </td>
-           <td><input type="number" value="1" /></td>
-           <td>₹1500.00</td>
-         </tr>
-       </table>
-     
-      
-     </div>
-     </div>
-  )
+    <div>
+      <UserNavbar/>
+      <div className="small-container cart-page">    
+        <table>
+          <thead>
+            <tr>
+              <th>Orders</th>
+              <th></th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            {orders.map((order, index) => (
+              <React.Fragment key={index}>
+                {order.cartItems.map((item, itemIndex) => (
+                  <tr key={itemIndex}>
+                    <td>
+                      <div className="cart-info">
+                        <img src={item.img} alt="" />
+                        <div>
+                          <p style={{ color: 'black' }}>{item.name}</p>
+                          <small>Price ₹{item.price}</small>
+                          <br />
+                        </div>
+                  
+                      </div>
+                    </td>
+                    <td>
+                      <button>
+                        <p>Subscribe</p>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          class="h-6 w-6"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                          stroke-width="4"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M14 5l7 7m0 0l-7 7m7-7H3"
+                          ></path>
+                        </svg>
+                      </button>
+                    </td>
+                    <td>{order.userDetails.paymentType}</td>
+                    <td>Confirmed</td>
+                  </tr>
+                ))}
+              </React.Fragment>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <Footer/>
+    </div>
+  );
 }
 
-export default MyOrders
+export default MyOrders;

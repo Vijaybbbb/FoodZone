@@ -4,6 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import {addToOrders} from '../../Redux/UserOrderDetailsSlice'
 import { useSelector } from 'react-redux'
+import {clearCart} from '../../Redux/cartSlice'
 
 const PaymentPage = () => {
 
@@ -87,7 +88,11 @@ const PaymentPage = () => {
     marginLeft: "-500px" }}>
               
                     <button id="" onClick={()=>{
-                       dispatch(addToOrders({email,phone,address1,address2,paymentType,cartData}))     
+                       dispatch(addToOrders({email,phone,address1,address2,paymentType,cartData}))
+                       setTimeout(()=>{
+                        navigate('/myorders')
+                        dispatch(clearCart())
+                       })
                     }}>Payment Checkout</button>
                 </section>
 

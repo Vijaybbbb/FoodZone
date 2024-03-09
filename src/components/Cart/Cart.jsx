@@ -6,10 +6,7 @@ import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
-const TableHeader=styled.th`
-background-color: green;
 
-`
 
 const Cart = () => {
   const cartData = useSelector(state => state.cart.cart);
@@ -78,111 +75,7 @@ const Cart = () => {
   };
 
   return (
-  //  <div>
-  // {
-
-  //   <div>
-      
-  //     <UserNavbar />
-  //     {updatedCart.length === 0 ? (
-  //                      <div id='oxy-shopping-cart-wrapper'>
-  //                             <p>Cart Empty</p><br />
-  //                             <a href='' onClick={()=>{navigate('/products')}}>RETURN TO SHOP</a>
-  //                      </div>
-  //                      ) : (
-  //     <div className="small-container cart-page">
-      
-  //       <table>
-  //         <thead>
-  //           <tr>
-  //             <th>Product</th>
-  //             <th>Quantity</th>
-  //             <th></th>
-  //             <th>Subtotal</th>
-  //           </tr>
-  //         </thead>
-  //         {updatedCart && updatedCart.map((data) =>
-  //           <tbody key={data.id}>
-  //             <tr>
-  //               <td>
-  //                 <div className="cart-info">
-  //                   <img src={data.img} alt="" />
-  //                   <div>
-  //                     <p>{data.name}</p>
-  //                     <small>Price ${data.price}</small>
-  //                     <br />
-  //                     <label className='label' onClick={() => { removeProduct(data.id) }}>Remove</label>
-  //                   </div>
-  //                 </div>
-  //               </td>
-  //               <td><input type="number" value={count[data.id] || 1} /></td>
-  //               <div className='btndiv'>
-  //                 <button className='btncount' onClick={() => {
-  //                   handleIncrement(data.id)
-  //                   setSingleProductTotal((count[data.id] || 1) * data.price)
-
-  //                 }}>+</button>
-
-
-  //                 <button className='btncount' onClick={() => {
-  //                   handleDecrement(data.id)
-  //                 }}>-</button>
-  //               </div>
-  //               <td>${singleProductTotal[data.id] || data.price}</td>
-  //             </tr>
-              
-  //           </tbody>
-  //         )}
-  //       </table>
-        
-  //       <div className="total-price">
-  //         <table>
-  //           <tbody>
-              
-  //             <tr>
-  //               <td>Subtotal</td>
-  //               <td>${subtotal}</td>
-  //             </tr>
-  //             <tr>
-  //               <td>Tax</td>
-  //               <td>₹15.00</td>
-  //             </tr>
-  //             <tr>
-  //               <td>Total</td>
-  //               <td>${total}</td>
-  //             </tr>
-  //           </tbody>
-  //         </table>
-  //       </div>
-        
-  //                      <div className='paymentbtn' style={{marginBottom:'300px'}}>
-  //                             <button class="cssbuttons-io" onClick={()=>{
-  //                               setIsLoading(true)
-  //                               setTimeout(()=>{
-  //                               setIsLoading(false)
-  //                               navigate('/payment')
-  //                             },3000)}}>
-  //                                    <span>
-  //                                           <path d="M0 0h24v24H0z" fill="none"></path>
-  //                                           <path
-  //                                                  d="M24 12l-5.657 5.657-1.414-1.414L21.172 12l-4.243-4.243 1.414-1.414L24 12zM2.828 12l4.243 4.243-1.414 1.414L0 12l5.657-5.657L7.07 7.757 2.828 12zm6.96 9H7.66l6.552-18h2.128L9.788 21z"
-  //                                                  fill="currentColor"
-  //                                           ></path>
-
-  //                                           Proceed to Payment
-  //                                    </span>
-  //                             </button>
-
-
-  //                      </div>
-        
-  //     </div>
-  //       )}
-  //     <Footer />
-     
-  //   </div>
-  // }
-  // </div>
+  
   <div>
   {isLoading ? (
         <div style={{marginTop:'350px'}}>
