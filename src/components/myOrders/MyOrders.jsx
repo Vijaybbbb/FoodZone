@@ -3,13 +3,32 @@ import './myOrders.css';
 import UserNavbar from '../UserNavBar/UserNavbar';
 import { useSelector } from 'react-redux';
 import Footer from '../Footer/Footer';
+import { useState } from 'react';
 
 const MyOrders = () => {
   const orders = useSelector(state => state.userOrder.orderDetails);
- console.log(orders);
+  const [showPopup, setShowPopup] = useState(false);
+  const togglePopup = () => {
+    setShowPopup(!showPopup);
+  };
+
+
   return (
     <div>
       <UserNavbar/>
+
+      {showPopup && (
+        <div className="popup">
+          {/* Popup content */}
+          <div className="popup-content">
+            <h2>Details</h2>
+            <p>This is the content of the popup.</p>
+            {/* Close button to hide the popup */}
+            <button onClick={togglePopup}>Close</button>
+          </div>
+        </div>
+      )}
+
       <div className="small-container cart-page">    
         <table>
           <thead>
@@ -37,26 +56,10 @@ const MyOrders = () => {
                       </div>
                     </td>
                     <td>
-                      <button>
-                        <p>Subscribe</p>
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          class="h-6 w-6"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                          stroke-width="4"
-                        >
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            d="M14 5l7 7m0 0l-7 7m7-7H3"
-                          ></path>
-                        </svg>
-                      </button>
+                     <button className='viewDetails' onClick={togglePopup} >View Details</button>
                     </td>
                     <td>{order.userDetails.paymentType}</td>
-                    <td>Confirmed</td>
+                    <td className='status' style={{color:'green'}}>Confirmed</td>
                   </tr>
                 ))}
               </React.Fragment>
@@ -64,6 +67,8 @@ const MyOrders = () => {
           </tbody>
         </table>
       </div>
+      
+
       <Footer/>
     </div>
   );
