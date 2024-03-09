@@ -9,11 +9,11 @@ const userOrderSlice = createSlice({
        },
        reducers:{
               addToOrders:(state,action)=>{
-                     const { id, name, img, details ,price } = action.payload;
-                      state.productData = { id, name, img, details , price };
+                     console.log(action.payload);
+                     state.orderDetails.push(action.payload)
               }
        }
 })
 
-export const {addToOrders}  = loginSlice.actions
+export const {addToOrders}  = userOrderSlice.actions
 export default userOrderSlice.reducer
