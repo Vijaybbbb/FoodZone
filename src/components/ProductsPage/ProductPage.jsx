@@ -194,7 +194,7 @@ const ProductPage = () => {
                         </div>
                         <div className="card__info">
                           <div className="car__info--title">
-                            <h3>{data.strMeal}</h3>
+                            <h3>{data.strMeal.substring(0,20)}</h3>
                             <p style={{ color: 'black' }}>Fresh & sweet</p>
                           </div>
                           <div className="card__info--price">

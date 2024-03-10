@@ -3,8 +3,8 @@ import './ProductView.css'
 import UserNavBar from '../UserNavBar/UserNavbar'
 import Footer from '../Footer/Footer'
 import { useNavigate, useParams } from 'react-router-dom'
-import { useSelector } from 'react-redux'
-
+import { useSelector,useDispatch } from 'react-redux'
+import { addToCart } from '../../Redux/cartSlice'
 const ProductView = () => {
 
   const id  = useParams() 
@@ -12,6 +12,7 @@ const ProductView = () => {
   const para =productData.details
   const cartData = useSelector(state => state.cart.cart)
   const navigate = useNavigate()
+  const dispatch = useDispatch()
 
   return (
     <div>
@@ -33,10 +34,10 @@ const ProductView = () => {
           
           <a href="" className="btn" style={{marginLeft:"20px"}}  onClick={()=>{
 
-
-                if (cartData.find(item => item.id == data.idMeal)) {
+               
+                if (cartData.find(item => item.id == productData.id)) {
                   navigate('/cart')
-                  cartBtn.style.backgroundColor = 'red'
+                  
                 } else {
                   dispatch(addToCart({
                     id: productData?.id,

@@ -88,7 +88,7 @@ const PaymentPage = () => {
     marginLeft: "-500px" }}>
               
                     <button id="" onClick={()=>{
-                       dispatch(addToOrders({email,phone,address1,address2,paymentType,cartData}))
+                       dispatch(addToOrders({fullname,email,phone,address1,address2,paymentType,cartData}))
                        setTimeout(()=>{
                         navigate('/myorders')
                         dispatch(clearCart())

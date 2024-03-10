@@ -7,27 +7,24 @@ import { useState } from 'react';
 
 const MyOrders = () => {
   const orders = useSelector(state => state.userOrder.orderDetails);
+ 
   const [showPopup, setShowPopup] = useState(false);
-  const togglePopup = () => {
-    setShowPopup(!showPopup);
-  };
+  const [address,setAddress] =useState()
+  const [price,setPrice] = useState() 
 
+  
+  function selectedOrder(order){
+    console.log(order);
+      setAddress(order.userDetails);
+  }
+  function findPrice(price){
+    const p = Number(price)
+    setPrice(p+5)
+  }
 
   return (
     <div>
       <UserNavbar/>
-
-      {showPopup && (
-        <div className="popup">
-          {/* Popup content */}
-          <div className="popup-content">
-            <h2>Details</h2>
-            <p>This is the content of the popup.</p>
-            {/* Close button to hide the popup */}
-            <button onClick={togglePopup}>Close</button>
-          </div>
-        </div>
-      )}
 
       <div className="small-container cart-page">    
         <table>
@@ -56,7 +53,59 @@ const MyOrders = () => {
                       </div>
                     </td>
                     <td>
-                     <button className='viewDetails' onClick={togglePopup} >View Details</button>
+                      <div id="button">
+                        <a href="#popup" onClick={()=>{
+                          selectedOrder(order)
+                          findPrice(item.price)
+                          }}>View Details</a>
+                      </div>
+                      <div id="popup">
+                        <div class="window">
+                         <div className='orderDetails'>                 
+                    <div className="dcard">
+                    <div className="dheader">Order Details</div>
+                    <table className="ddetails-table">
+                        <tbody>
+                            <tr>
+                                <th style={{color:'black'}}>Order Number:</th>
+                                <td>#000000</td>
+                            </tr>
+                            <tr>
+                                <th style={{color:'black'}}>Order Date:</th>
+                                <td>March 10, 2024</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div className="dsection-title">Shipping Address</div>
+                    <p  style={{color:'black' ,textAlign:'left'}}>
+                        {address?.fullname}<br />
+                        {address?.email}<br />
+                        {address?.phone}<br />
+                        {address?.address1}
+                    </p>                   
+                    <div className="dsection-title">Order Summary</div>
+                    <table className="ddetails-table">
+                        <tbody>
+                           
+                            <tr>
+                                <th>Shipping:</th>
+                                <td>$5.00</td>
+                            </tr>
+                            <tr>
+                                <th>Total:</th>
+                                <td>${price}</td>
+                            </tr>
+                            <tr>
+                              <td></td><td><button className="cancel-button" >Cancel Order</button></td>
+                            </tr>
+                        </tbody>
+                    </table>           
+                </div>   
+            </div>   
+          <a href="#" className="close-button" title="Close">Close</a>
+          <h1></h1>
+        </div>
+      </div>
                     </td>
                     <td>{order.userDetails.paymentType}</td>
                     <td className='status' style={{color:'green'}}>Confirmed</td>
@@ -67,6 +116,9 @@ const MyOrders = () => {
           </tbody>
         </table>
       </div>
+
+
+      
       
 
       <Footer/>

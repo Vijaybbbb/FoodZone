@@ -58,124 +58,158 @@
      th:last-child {
        text-align: right;
      }
-     /* account page */
-     .account-page {
-       padding: 50px 0;
-       background: radial-gradient(#fff, #ffd6d6);
-     }
-     
-     .form-container {
-       background: #ffffff;
-       width: 300px;
-       height: 400px;
-       position: relative;
-       text-align: center;
-       padding: 20px 0;
-       margin: auto;
-       box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.1);
-       overflow: hidden;
-     }
-     
-     .form-container span {
-       font-weight: bold;
-       padding: 0 10px;
-       color: #555555;
-       cursor: pointer;
-       width: 100px;
-       display: inline-block;
-     }
-     
-     .form-btn {
-       display: inline-block;
-     }
-     
-     .form-container form {
-       max-width: 300px;
-       padding: 0 20px;
-       position: absolute;
-       top: 130px;
-       transition: transform 1s;
-     }
-     
-     form input {
-       width: 100%;
-       height: 30px;
-       margin: 10px 0;
-       padding: 0 10px;
-       border: 1px solid #ccc;
-     }
-     
-     form .btn {
-       width: 100%;
-       border: none;
-       cursor: pointer;
-       margin: 10px 0;
-     }
-     
-     form .btn:focus {
-       outline: none;
-     }
-     
-     #LoginForm {
-       left: -300px;
-     }
-     
-     #RegForm {
-       left: 0;
-     }
-     
-     form a {
-       font-size: 12px;
-     }
-     
-     #Indicator {
-       width: 100px;
-       border: none;
-       background: #ff523b;
-       height: 3px;
-       margin-top: 8px;
-       transform: translateX(100px);
-       transition: transform 1s;
-     }
-     
+    
+  
 
 
-
-
-
-     .viewDetails {
-      background-color: #FFFFFF;
-      border: 1px solid rgb(209,213,219);
-      border-radius: .5rem;
-      color: #111827;
-      font-family: ui-sans-serif,system-ui,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
-      font-size: .875rem;
-      font-weight: 600;
-      line-height: 1.25rem;
-      padding: .65rem 1rem;
+    #button {
+      margin: 5% auto;
+      width: 100px;
       text-align: center;
-      -webkit-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-      box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-      cursor: pointer;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
-      -webkit-user-select: none;
-      -ms-touch-action: manipulation;
-      touch-action: manipulation;
-      width: "100px";
     }
-    
-    .viewDetails:hover {
-      background-color: #f9fafb;
+    #button a {
+      background-image: linear-gradient(to bottom, #ffffff, #f8f8f8);
+      background-color: #ffffff;
+      width: 86px;
+      height: 30px;
+      vertical-align: middle;
+      padding: 10px;
+      color: #000000;
+      text-decoration: none;
+      border: 1px solid transparent;
+      border-radius: 5px;
     }
-    
-    .viewDetails:focus {
-      outline: 2px solid rgba(0,0,0,0.1);
-      outline-offset: 2px;
+    #popup {
+      width: 100%;
+      height: 100%;
+      position: fixed;
+      background: rgba(0, 0, 0, 0.7);
+      top: 0;
+      left: 0;
+      z-index: 9999;
+      visibility: hidden;
     }
-    
-    .viewDetails:focus-visible {
-      -webkit-box-shadow: none;
-      box-shadow: none;
+    .window {
+      width: 600px;
+      background: #fff;
+      border-radius: 10px;
+      position: relative;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+      text-align: center;
+      margin: 15% auto;
+      height: 700px;
+      margin-top: 20px;
     }
+    .cancel-button{
+      width: 100px;
+      height: 29px;
+      line-height: 20px;
+      background: #ff0000;
+      border-radius: 1px;
+      border: 3px solid #fff;
+      display: block;
+      text-align: center;
+      color: #fff;
+      text-decoration: none;
+      position: absolute;
+      top: 600px;
+      right: 41px;
+      text-align: center;
+    }
+
+
+
+
+    .close-button {
+      width: 100px;
+      height: 29px;
+      line-height: 20px;
+      background: #000;
+      border-radius: 1px;
+      border: 3px solid #fff;
+      display: block;
+      text-align: center;
+      color: #fff;
+      text-decoration: none;
+      position: absolute;
+      top: 600px;
+      right: 455px;
+    }
+    #popup:target {
+      visibility: visible;
+    }
+    h1 {
+      background-image: linear-gradient(to bottom, #ffffff, #ffffff);
+      font: 16px/24px;
+      color: #000000;
+      padding: 10px;
+      border-radius: 10px 10px 0 0;
+    }
+
+
+
+
+
+
+    .orderDetails {
+      font-family: Arial, sans-serif;
+      margin: 5;
+      padding: 20px;
+      background-color: #ffffff;
+      height: 600px;
+      
+  }
+  
+  .dcard {
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      margin-bottom: 0;
+      margin-top: 150px;
+      height: 450px;
+  }
+  .dheader {
+      text-align: center;
+      font-size: 24px;
+      color: #2f2f2f;
+      margin-bottom: 20px;
+  }
+  .ddetails-table {
+      width: 80%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+  }
+  .ddetails-table th, .details-table td {
+      padding: 12px;
+      border-bottom: 1px solid #ddd;
+      text-align: left;
+  }
+  .ddetails-table th {
+      background-color: #d8d8d8;
+  }
+  .dsection-title {
+      font-size: 20px;
+      color: #333;
+      margin-bottom: 10px;
+  }
+ 
+
+  .progress {
+    height: 30px;
+    background-color: #ddd;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    display: flex;
+}
+.progress-bar {
+    width: 33.33%;
+    height: 100%;
+    background-color: #4CAF50;
+    text-align: center;
+    line-height: 30px;
+    color: white;
+    transition: width 0.5s ease;
+    border-radius: 50%;
+}
