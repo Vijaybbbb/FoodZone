@@ -1,131 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-       <meta charset="UTF-8">
-       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-       <title>Document</title>
-       <link rel="stylesheet" href="./sample.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Popup Window</title>
+<style>
+  /* CSS styles */
+  #button {
+    margin: 5% auto;
+    width: 100px;
+    text-align: center;
+  }
+  #button a {
+    background-image: linear-gradient(to bottom, #2a95c5, #21759b);
+    background-color: #2e9fd2;
+    width: 86px;
+    height: 30px;
+    vertical-align: middle;
+    padding: 10px;
+    color: #fff;
+    text-decoration: none;
+    border: 1px solid transparent;
+    border-radius: 5px;
+  }
+  #popup {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background: rgba(0, 0, 0, 0.7);
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    visibility: hidden;
+  }
+  .window {
+    width: 400px;
+    background: #fff;
+    border-radius: 10px;
+    position: relative;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+    text-align: center;
+    margin: 15% auto;
+  }
+  .close-button {
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    background: #000;
+    border-radius: 50%;
+    border: 3px solid #fff;
+    display: block;
+    text-align: center;
+    color: #fff;
+    text-decoration: none;
+    position: absolute;
+    top: -10px;
+    right: -10px;
+  }
+  #popup:target {
+    visibility: visible;
+  }
+  h1 {
+    background-image: linear-gradient(to bottom, #2a95c5, #21759b);
+    font: 16px/24px;
+    color: #fff;
+    padding: 10px;
+    border-radius: 10px 10px 0 0;
+  }
+  p {
+    padding: 20px;
+    line-height: 1.8;
+  }
+</style>
 </head>
 <body>
-  
-  
-  <!-- single product details -->
-  <div class="small-container single-product">
-    <div class="row">
-      <div class="col-2">
-        <img src="https://i.ibb.co/1MydDzN/gallery-1.jpg" alt="" width="100%" id="ProductImg" />
-  
-        <div class="small-img-row">
-          <div class="small-img-col">
-            <img src="https://i.ibb.co/1MydDzN/gallery-1.jpg" alt="" width="100%" class="small-img" />
-          </div>
-          <div class="small-img-col">
-            <img src="https://i.ibb.co/4j34KdX/gallery-2.jpg" alt="" width="100%" class="small-img" />
-          </div>
-          <div class="small-img-col">
-            <img src="https://i.ibb.co/kGhWJ84/gallery-3.jpg" alt="" width="100%" class="small-img" />
-          </div>
-          <div class="small-img-col">
-            <img src="https://i.ibb.co/4j34KdX/gallery-2.jpg" alt="" width="100%" class="small-img" />
-          </div>
-        </div>
-      </div>
-      <div class="col-2">
-        <p>Home / T-Shirt</p>
-        <h1>Red Printed T-Shirt by HRX</h1>
-        <h4>₹500</h4>
-        <select>
-          <option>Select Size</option>
-          <option>XXL</option>
-          <option>XL</option>
-          <option>L</option>
-          <option>M</option>
-          <option>S</option>
-        </select>
-        <input type="number" value="1" />
-        <a href="" class="btn">Add To Cart</a>
-  
-        <h3>Product Details <i class="fas fa-indent"></i></h3>
-        <br />
-        <p>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Alias,
-          accusamus soluta quasi illum, deserunt ut iste rem obcaecati
-          inventore, est harum repellendus fuga velit odio sint officia
-          corrupti eum perspiciatis.
-        </p>
-      </div>
+  <!-- Button -->
+  <div id="button">
+    <a href="#popup"></a>
+  </div>
+
+  <!-- Popup -->
+  <div id="popup">
+    <div class="window">
+      <a href="#" class="close-button" title="Close">X</a>
+      <h1></h1>
+      <p>
+        <br>
+        <br>
+        <br>
+       
+      </p>
     </div>
   </div>
-  
-  <!-- title -->
-  <div class="small-container">
-    <div class="row row-2">
-      <h2>Related Products</h2>
-      <p>View more</p>
-    </div>
-  </div>
-  
-  <!-- products -->
-  
-  <div class="small-container">
-    <div class="row">
-      <div class="col-4">
-        <img src="https://i.ibb.co/47Sk9QL/product-1.jpg" alt="" />
-        <h4>Red Printed T-shirt</h4>
-        <div class="rating">
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="far fa-star"></i>
-        </div>
-        <p>₹500.00</p>
-      </div>
-  
-      <div class="col-4">
-        <img src="https://i.ibb.co/b7ZVzYr/product-2.jpg" alt="" />
-        <h4>Red Printed T-shirt</h4>
-        <div class="rating">
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="far fa-star"></i>
-          <i class="far fa-star"></i>
-        </div>
-        <p>₹500.00</p>
-      </div>
-  
-      <div class="col-4">
-        <img src="https://i.ibb.co/KsMVr26/product-3.jpg" alt="" />
-        <h4>Red Printed T-shirt</h4>
-        <div class="rating">
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star-half-alt"></i>
-        </div>
-        <p>₹500.00</p>
-      </div>
-  
-      <div class="col-4">
-        <img src="https://i.ibb.co/0cMfpcr/product-4.jpg" alt="" />
-        <h4>Red Printed T-shirt</h4>
-        <div class="rating">
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="far fa-star"></i>
-          <i class="far fa-star"></i>
-          <i class="far fa-star"></i>
-        </div>
-        <p>₹500.00</p>
-      </div>
-    </div>
-  </div>
-  
- 
-  
- 
- 
 </body>
 </html>
