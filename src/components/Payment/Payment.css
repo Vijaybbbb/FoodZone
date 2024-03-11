@@ -52,6 +52,7 @@ h1{
     padding: 0;
     margin: 0;
     font-size: 1.5rem;
+    background-color: #4256C0;
 }
 p{
     color: var(--white);
@@ -64,4 +65,8 @@ p{
         
 select > option{
     color: var(--brand_blue); 
+}
+
+#title{
+    background-color: #4256C0;
 }

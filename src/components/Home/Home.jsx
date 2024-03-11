@@ -16,7 +16,7 @@ const Home = () => {
       <div className="copyrightText">
         <p>Copyright 2021. All rights are reserved</p>
       </div>
-    
+      <Footer/>
     </body>
   );
 };

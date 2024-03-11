@@ -1,15 +1,19 @@
 import React from 'react'
 import '../Home/Home.css'
 import '../Home/Script.js'
+import { useNavigate } from 'react-router-dom'
 
 const Banner = () => {
+
+  const navigate = useNavigate()
+
   return (
     <div>
       <section className="banner" id="banner">
         <div className="content">
           <h2>Always Choose Good</h2>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud .</p>
-          <a href="#" className="btn">Our Menu</a>
+          <a href="#" className="btn" onClick={()=>{navigate('/products')}}>Our Menu</a>
         </div>  
       </section>
       <section className="about" id="about">

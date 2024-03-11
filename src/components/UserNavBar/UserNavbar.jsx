@@ -42,7 +42,7 @@ const UserNavbar = () => {
               <li><a href="" onClick={()=>{navigate('/home')}}>Home</a></li>
               <li><a href="" onClick={()=>{navigate('/products')}}>Products</a></li>
               <li><a href="" onClick={()=>{navigate('/')}} >Login</a></li>
-              <li><a href="" onClick={()=>{navigate('/')}} >Sign Up</a></li>
+              <li><a href="" onClick={()=>{navigate('/signup')}} >Sign Up</a></li>
             </ul>
           </nav>
           <img src="https://i.ibb.co/6XbqwjD/menu.png" alt="" className="menu-icon" />

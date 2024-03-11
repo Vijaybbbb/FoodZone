@@ -117,7 +117,7 @@ const Cart = () => {
                       <img src={data.img} alt="" />
                       <div>
                         <p>{data.name}</p>
-                        <div className='priceamt'>${(count[data.id] || 1) * data.price}</div>
+                        <div className='priceamt'>Price : ${(count[data.id] || 1) * data.price}</div>
 
                         <br />
                         <label className='label' onClick={() => { removeProduct(data.id) }}>Remove</label>
@@ -166,7 +166,7 @@ const Cart = () => {
                 navigate(`/payment/${total}`);  
               }, 4000);
             }}>
-              <span>Proceed to Payment</span>
+              <span style={{marginTop:'-12px'}}>Proceed to Payment</span>
             </button>
           </div>
         </div>

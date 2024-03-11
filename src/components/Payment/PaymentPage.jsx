@@ -26,13 +26,13 @@ const PaymentPage = () => {
 
   return (
     <div>
-      <div style={{ display: 'flex', width: '500px',display:'flex' ,alignItems:'center',marginLeft:'500px',marginTop:'20px' }}>
+      <div style={{ display: 'flex', width: '500px',display:'flex' ,alignItems:'center',marginLeft:'500px',marginTop:'-60px' }}>
             <form style={{ width: '35rem', boxShadow: '0px 4px 4px rgba(102, 102, 102, 0.25)', borderRadius: '3px' }}>
                 {/* Header */}
                 <section style={{ display: 'flex', flexDirection: 'column', backgroundColor: 'var(--brand_blue)', padding: '1rem', height: '7rem', borderRadius: '3px 3px 0 0' }}>
                     <h1 id="title">Payment Checkout</h1>
-                    <p id="description">Checkout with Ease</p>
-                    <p id="description" style={{fontSize:'13px',marginTop:'10px'}}>Payable Amount : ${total}</p>
+                    <p id="description" style={{marginTop:'10px'}}>Checkout with Ease</p>
+                    <p id="description" style={{fontSize:'10px',marginTop:'-15px',marginLeft:'300px',position:'relative'}}>Payable Amount : ${total}</p>
                 </section>
 
                 {/* Content */}
