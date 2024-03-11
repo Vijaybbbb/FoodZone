@@ -18,8 +18,10 @@ const Login = () => {
        function handleLogin(event){
         event.preventDefault();
             signInWithEmailAndPassword(auth,email,password).then(()=>{
-                navigate('/products')
                 dispatch(findUser({email,password}))
+                setTimeout(()=>{
+                    navigate('/products')
+                })
             }).catch(()=>{
                 setError(true)
             })

@@ -4,121 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Order Details</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-            background-color: #f0f2f7;
-        }
-        .container {
-            max-width: 500px;
-            margin: 0 auto;
-        }
-        .card {
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            margin-bottom: 20px;
-        }
-        .header {
-            text-align: center;
-            font-size: 24px;
-            color: #333;
-            margin-bottom: 20px;
-        }
-        .details-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 20px;
-        }
-        .details-table th, .details-table td {
-            padding: 12px;
-            border-bottom: 1px solid #ddd;
-            text-align: left;
-        }
-        .details-table th {
-            background-color: #f2f2f2;
-        }
-        .section-title {
-            font-size: 20px;
-            color: #333;
-            margin-bottom: 10px;
-        }
-        .total-amount {
-            font-size: 24px;
-            text-align: center;
-            margin-top: 30px;
-            color: #4CAF50;
-        }
-        .progress {
-            height: 30px;
-            background-color: #ddd;
-            border-radius: 5px;
-            margin-bottom: 20px;
-            overflow: hidden;
-        }
-        .progress-bar {
-            width: 33.33%;
-            height: 100%;
-            background-color: #4CAF50;
-            text-align: center;
-            line-height: 30px;
-            color: white;
-            transition: width 0.5s ease;
-        }
-    </style>
+    <link rel="stylesheet" href="./sample.css">
 </head>
+ 
+
 <body>
-    <div class="container">
-        <div class="card">
-            <div class="header">Order Details</div>
-            <table class="details-table">
-                <tr>
-                    <th>Order Number:</th>
-                    <td>#123456</td>
-                </tr>
-                <tr>
-                    <th>Order Date:</th>
-                    <td>March 10, 2024</td>
-                </tr>
-            </table>
-            <div class="section-title">Shipping Address</div>
-            <p>
-                John Doe<br>
-                123 Main Street<br>
-                Cityville, State, ZIP<br>
-                Country
-            </p>
-        </div>
-
-      
-
-        <div class="card">
-            <div class="section-title">Order Summary</div>
-            <table class="details-table">
-                <tr>
-                    <th>Subtotal:</th>
-                    <td>$35.00</td>
-                </tr>
-                <tr>
-                    <th>Shipping:</th>
-                    <td>$5.00</td>
-                </tr>
-                <tr>
-                    <th>Total:</th>
-                    <td>$40.00</td>
-                </tr>
-            </table>
-            <div class="total-amount">Total Amount: $40.00</div>
-        </div>
-
-        <!-- <div class="progress">
-            <div class="progress-bar">Ordered</div>
-            <div class="progress-bar">Shipped</div>
-            <div class="progress-bar">Delivered</div>
-        </div> -->
-    </div>
-</body>
+            <div className="profile-container">
+                <div className="qcard">
+                    <div className="qcard-img">
+                       <img src="https://octodex.github.com/images/codercat.jpg" alt="profile">  
+                    </div>
+                    <div className="qdesc">
+                       <h6 className="qprimary-text">Rosemary Ly</h6>
+                       <h6 className="qsecondary-text">Front End Developer</h6>
+                    </div>
+                    <button id="qbutton" className="qprimary-text">View Profile</button>
+                    <div className="qdetails">
+                       <div className="qrating">
+                          <h6 className="qprimary-text">86%</h6>
+                          <h6 className="qsecondary-text">Rating</h6>
+                       </div>
+                       <div className="qactivity">
+                          <h6 className="qprimary-text">92%</h6>
+                          <h6 className="qsecondary-text">Activity</h6>
+                       </div>
+                    </div>
+                 </div>
+            </div>
+    </body>
 </html>

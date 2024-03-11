@@ -18,7 +18,7 @@ const Footer = () => {
     </div>
 
     <div class="sfooter-col-2"> 
-    <img src="https://i.ibb.co/j3FNGj7/logo-white.png" alt="" />
+    <img src={logo} alt="" />
     <p>
            Our Purpose Is To Sustainably Make the Pleasure and Benefits of
            Sports Accessible to the Many.

@@ -23,6 +23,7 @@ const ProductPage = () => {
 
   //fetching cartData from Store
   const cartData = useSelector(state => state.cart.cart)
+  const user = useSelector(state=>state.userData)
   const cartBtn = useRef()
   
   
@@ -133,7 +134,7 @@ const ProductPage = () => {
     
       
 
-<div style={{backgroundColor:'white',height:'2000px'}}>
+<div style={{backgroundColor:'white',height:'1750px'}}>
       {isLoading ? (
         <div style={{marginBottom:'1000px'}}>
           <UserNavbar />
@@ -209,18 +210,23 @@ const ProductPage = () => {
 
                         <button ref={cartBtn} className="CartBtn" onClick={(e) => {
                           e.stopPropagation();
-                          if (cartData.find(item => item.id == data.idMeal)) {
-                            navigate('/cart')
-                            cartBtn.style.backgroundColor = 'red'
-                          } else {
-                            dispatch(addToCart({
-                              id: data?.idMeal,
-                              name: data?.strMeal,
-                              img: data?.strMealThumb,
-                              price: getPrice(data.idMeal),
-                            }))
+                          if(user?.email){
+                            if (cartData.find(item => item.id == data.idMeal)) {
+                              navigate('/cart')
+                              cartBtn.style.backgroundColor = 'red'
+                            } else {
+                              dispatch(addToCart({
+                                id: data?.idMeal,
+                                name: data?.strMeal,
+                                img: data?.strMealThumb,
+                                price: getPrice(data.idMeal),
+                              }))
+                            }
+  
                           }
-
+                          else{
+                            navigate('/')
+                          }
 
                         }}>
                           <span className="IconContainer">

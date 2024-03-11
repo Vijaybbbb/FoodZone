@@ -9,6 +9,7 @@ const ProductView = () => {
 
   const id  = useParams() 
   const productData  = useSelector(state => state.selectedProduct.productData)
+  const user = useSelector(state=> state.userData)
   const para =productData.details
   const cartData = useSelector(state => state.cart.cart)
   const navigate = useNavigate()
@@ -34,7 +35,7 @@ const ProductView = () => {
           
           <a href="" className="btn" style={{marginLeft:"20px"}}  onClick={()=>{
 
-               
+               if(user?.email){
                 if (cartData.find(item => item.id == productData.id)) {
                   navigate('/cart')
                   
@@ -46,6 +47,11 @@ const ProductView = () => {
                     price: productData?.price,
                   }))
                 }
+               }
+               else{
+                navigate('/')
+               }
+               
 
           }}>Add To Cart</a>
          
@@ -65,8 +71,8 @@ const ProductView = () => {
       </div>
       <div className="row"  style={{margin:0,padding:0,boxSizing:'border-box'}}>
         <div className="col-4">
-          <img src="https://i.ibb.co/47Sk9QL/product-1.jpg" alt="" />
-          <h4>Red Printed T-shirt</h4>
+          <img src="" alt="" />
+          <h4></h4>
           <div className="rating">
             <i className="fas fa-star"></i>
             <i className="fas fa-star"></i>
