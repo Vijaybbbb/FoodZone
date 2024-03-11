@@ -12,14 +12,16 @@ const Login = () => {
        const [email,setEmail] = useState()
        const [password,setPassword] = useState()
        const[isLoading,setIsLoading] = useState(true)
+       const[error,setError] = useState(false)
        const dispatch = useDispatch()
 
-       function handleLogin(){
+       function handleLogin(event){
+        event.preventDefault();
             signInWithEmailAndPassword(auth,email,password).then(()=>{
                 navigate('/products')
                 dispatch(findUser({email,password}))
             }).catch(()=>{
-                console.log('Invalid Credentials');
+                setError(true)
             })
        }
 
@@ -27,9 +29,13 @@ const Login = () => {
        
               <div className="main">
               <p className="sign" align="center">Login</p>
+              {error ? (
+              <p style={{color:'red',fontSize:'10px',position:'relative',top:'300px',left:'138px'}}>Invalid Credentials</p>
+              ):('')
+               }
               <form className="form1">
-                  <input className="un" type="text" align="center" placeholder="Email" onChange={(e)=>{setEmail(e.target.value)}} />
-                  <input className="pass" type="password" align="center" placeholder="Password" onChange={(e)=>{setPassword(e.target.value)}} />
+                  <input className="un" required type="text" align="center" placeholder="Email" onChange={(e)=>{setEmail(e.target.value)}} />
+                  <input className="pass" required type="password" align="center" placeholder="Password" onChange={(e)=>{setPassword(e.target.value)}} />
                   <a className="submit" align="center" onClick={handleLogin}>Login</a>
                   <a className="submitsign" align="center" onClick={() => navigate('/signup')}>Sign Up</a>
                   <br /><br />

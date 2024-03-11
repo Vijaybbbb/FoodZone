@@ -2,11 +2,13 @@ import React from 'react'
 import '../Home/Home.css'
 import '../Home/Script.js'
 import { useNavigate } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 
 const Navbar = () => {
   const navigate = useNavigate()
   return (
     <div>
+      
       <header>
         <a href="#" className="logomain">Food Zone<span>.</span></a>
         <div className="menuToggle" onClick="toggleMenu();"></div>
@@ -18,6 +20,7 @@ const Navbar = () => {
           <li className=""><a href="#contact" onClick="toggleMenu();">Contact</a></li>
         </ul>
       </header>
+      
     </div>
   )
 }

@@ -5,13 +5,15 @@ import { auth } from '../../Firebase/config';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import '../../Firebase/config';
 import { collection,getFirestore,addDoc } from 'firebase/firestore';
+import { useNavigate } from 'react-router-dom';
 
 
 const SignInPage = () => {
   
   const [email,setEmail] = useState() 
   const [username,setUsername] = useState()
-  const [password,setPassword] = useState() 
+  const [password,setPassword] = useState()
+  const navigate = useNavigate() 
   
   const db  = getFirestore()
  // const {Firebase} = useContext(FirebaseContext)
@@ -28,6 +30,7 @@ const SignInPage = () => {
     });
     
     })
+    navigate('/')
   }
 
   return (

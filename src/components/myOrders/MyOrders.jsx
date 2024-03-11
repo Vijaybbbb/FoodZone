@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import './myOrders.css';
 import UserNavbar from '../UserNavBar/UserNavbar';
 import { useSelector } from 'react-redux';
@@ -7,20 +7,41 @@ import { useState } from 'react';
 
 const MyOrders = () => {
   const orders = useSelector(state => state.userOrder.orderDetails);
- 
   const [showPopup, setShowPopup] = useState(false);
-  const [address,setAddress] =useState()
-  const [price,setPrice] = useState() 
+  const [address,setAddress] = useState();
+  const [price,setPrice] = useState();
+  const [status,setStatus] = useState([{id:null,status:'Confirmed Order'}]);
+ 
 
-  
   function selectedOrder(order){
-    console.log(order);
-      setAddress(order.userDetails);
+    setAddress(order.userDetails);
   }
+  
   function findPrice(price){
-    const p = Number(price)
-    setPrice(p+5)
+    const p = Number(price);
+    setPrice(p+5);
   }
+
+  function setOrderStatus(id) {
+    setStatus(prevStatus => {
+      // Check if the id exists in the current status array
+      const index = prevStatus.findIndex(order => order.id === id);
+      if (index !== -1) {
+        // If the id exists, update the status
+        return prevStatus.map((order, i) => (i === index ? { ...order, status: 'Canceled' } : order));
+      } else {
+        // If the id does not exist, push a new object with the Canceled status
+        return [...prevStatus, { id: id, status: 'Canceled' }];
+      }
+    });
+  }
+  
+
+  useEffect(()=>{
+    console.log(status);
+  })
+  
+
 
   return (
     <div>
@@ -55,6 +76,7 @@ const MyOrders = () => {
                     <td>
                       <div id="button">
                         <a href="#popup" onClick={()=>{
+                          
                           selectedOrder(order)
                           findPrice(item.price)
                           }}>View Details</a>
@@ -67,8 +89,8 @@ const MyOrders = () => {
                     <table className="ddetails-table">
                         <tbody>
                             <tr>
-                                <th style={{color:'black'}}>Order Number:</th>
-                                <td>#000000</td>
+                                <th style={{color:'black'}}>Order ID:</th>
+                                <td>COD{item.id}</td>
                             </tr>
                             <tr>
                                 <th style={{color:'black'}}>Order Date:</th>
@@ -88,15 +110,17 @@ const MyOrders = () => {
                         <tbody>
                            
                             <tr>
-                                <th>Shipping:</th>
+                                <th  style={{color:'black'}}>Shipping:</th>
                                 <td>$5.00</td>
                             </tr>
                             <tr>
-                                <th>Total:</th>
+                                <th style={{color:'black'}}>Total:</th>
                                 <td>${price}</td>
                             </tr>
                             <tr>
-                              <td></td><td><button className="cancel-button" >Cancel Order</button></td>
+                              <td></td><td><button className="cancel-button" onClick={()=>{
+                                  setOrderStatus(item.id)
+                              }} >Cancel Order</button></td>
                             </tr>
                         </tbody>
                     </table>           
@@ -108,7 +132,9 @@ const MyOrders = () => {
       </div>
                     </td>
                     <td>{order.userDetails.paymentType}</td>
-                    <td className='status' style={{color:'green'}}>Confirmed</td>
+                    {status.map((food)=>
+                    food.id==item.id ? <td>{food.status}</td> : <td>OrderConfirm</td>
+                    )}
                   </tr>
                 ))}
               </React.Fragment>
@@ -116,10 +142,6 @@ const MyOrders = () => {
           </tbody>
         </table>
       </div>
-
-
-      
-      
 
       <Footer/>
     </div>

@@ -101,7 +101,7 @@
       margin-top: 20px;
     }
     .cancel-button{
-      width: 100px;
+      width: 148px;
       height: 29px;
       line-height: 20px;
       background: #ff0000;
@@ -115,6 +115,8 @@
       top: 600px;
       right: 41px;
       text-align: center;
+      font-size: 13px;
+      padding-top: 2px;
     }
 
 
@@ -122,7 +124,7 @@
 
     .close-button {
       width: 100px;
-      height: 29px;
+      height: 25px;
       line-height: 20px;
       background: #000;
       border-radius: 1px;
@@ -134,6 +136,7 @@
       position: absolute;
       top: 600px;
       right: 455px;
+     
     }
     #popup:target {
       visibility: visible;
@@ -172,7 +175,7 @@
   .dheader {
       text-align: center;
       font-size: 24px;
-      color: #2f2f2f;
+      color: #3d3a3a;
       margin-bottom: 20px;
   }
   .ddetails-table {
@@ -195,21 +198,4 @@
   }
  
 
-  .progress {
-    height: 30px;
-    background-color: #ddd;
-    border-radius: 5px;
-    margin-bottom: 20px;
-    overflow: hidden;
-    display: flex;
-}
-.progress-bar {
-    width: 33.33%;
-    height: 100%;
-    background-color: #4CAF50;
-    text-align: center;
-    line-height: 30px;
-    color: white;
-    transition: width 0.5s ease;
-    border-radius: 50%;
-}
+  
