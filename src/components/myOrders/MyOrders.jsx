@@ -47,7 +47,7 @@ const MyOrders = () => {
     <div>
       <UserNavbar/>
 
-      <div className="small-container cart-page">    
+      <div className="small-container cart-page" style={{height:'1000px'}}>    
         <table>
           <thead>
             <tr>
@@ -133,7 +133,7 @@ const MyOrders = () => {
                     </td>
                     <td>{order.userDetails.paymentType}</td>
                     {status.map((food)=>
-                    food.id==item.id ? <td>{food.status}</td> : <td>OrderConfirm</td>
+                    food.id==item.id ? <td>{food.status}</td> : <td>{food.status}</td>
                     )}
                   </tr>
                 ))}

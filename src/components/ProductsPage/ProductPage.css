@@ -46,7 +46,9 @@ body {
   border: 1px solid lavender !important;
   margin: 10px !important;
   box-shadow: 5px 5px 15px 5px rgba(230, 230, 250, 1) !important;
-  height: 300px !important
+  height: 300px !important;
+  cursor: pointer;
+  
 }
 
 .card__image {
