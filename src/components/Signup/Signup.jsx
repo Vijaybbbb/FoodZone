@@ -1,6 +1,5 @@
 import React, { useContext, useState } from 'react';
 import '../Signup/Signup.css'
-import { FirebaseContext } from '../../context/FIrebaseContext';
 import { auth } from '../../Firebase/config';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import '../../Firebase/config';
