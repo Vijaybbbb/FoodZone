@@ -7,7 +7,6 @@ import { useState } from 'react';
 
 const MyOrders = () => {
   const orders = useSelector(state => state.userOrder.orderDetails);
-  const [showPopup, setShowPopup] = useState(false);
   const [address,setAddress] = useState();
   const [price,setPrice] = useState();
   const [status,setStatus] = useState([{id:null,status:'Confirmed Order'}]);
