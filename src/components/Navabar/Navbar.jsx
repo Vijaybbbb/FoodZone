@@ -2,7 +2,7 @@ import React from 'react'
 import '../Home/Home.css'
 import '../Home/Script.js'
 import { useNavigate } from 'react-router-dom'
-import { useSelector } from 'react-redux'
+
 
 const Navbar = () => {
   const navigate = useNavigate()

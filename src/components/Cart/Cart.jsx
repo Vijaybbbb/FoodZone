@@ -4,7 +4,7 @@ import UserNavbar from '../UserNavBar/UserNavbar';
 import Footer from '../Footer/Footer';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import styled from 'styled-components';
+
 
 
 
