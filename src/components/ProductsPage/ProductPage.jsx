@@ -276,7 +276,7 @@ const ProductPage = () => {
           )}
         </div>
       </div>
-         <div style={{marginTop:'50px'}} className='footerbody'>
+         <div style={{marginTop:'30px'}} className='footerbody'>
               <Footer/>
          </div>
 
