@@ -3,9 +3,13 @@ body{
        padding: 0;
        box-sizing: border-box;
        font-family: sans-serif;
-       scroll-behaviour: smooth;
-        
       }
+::-webkit-scrollbar{
+  display: none;
+}
+
+
+
       p{
        font-weight: 300;
        color: #111;

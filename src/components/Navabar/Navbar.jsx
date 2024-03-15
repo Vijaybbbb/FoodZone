@@ -10,7 +10,7 @@ const Navbar = () => {
     <div>
       
       <header>
-        <a href="#" className="logomain">Food Zone<span>.</span></a>
+        <a href="#" className="logomain" style={{ fontFamily: 'sans-serif'}}>Food Zone<span>.</span></a>
         <div className="menuToggle" onClick="toggleMenu();"></div>
         <ul className="navigation">
           <li><a href="" onClick="toggleMenu();">Home</a></li>

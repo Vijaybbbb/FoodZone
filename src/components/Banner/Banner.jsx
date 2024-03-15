@@ -8,7 +8,7 @@ const Banner = () => {
   const navigate = useNavigate()
 
   return (
-    <div>
+    <div style={{overflow:'hidden'}}>
       <section className="banner" id="banner">
         <div className="content">
           <h2>Always Choose Good</h2>
@@ -27,7 +27,7 @@ const Banner = () => {
           </div>
           <div className="co150">
             <div className="imgBx">
-              <img src="https://images.pexels.com/photos/2474658/pexels-photo-2474658.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="about"/>
+              <img src="https://images.pexels.com/photos/2474658/pexels-photo-2474658.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="about" />
             </div>
           </div>
         </div>
