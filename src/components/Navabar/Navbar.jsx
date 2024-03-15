@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom'
 const Navbar = () => {
   const navigate = useNavigate()
   return (
-    <div>
+    <div style={{}}>
       
       <header>
         <a href="#" className="logomain" style={{ fontFamily: 'sans-serif'}}>Food Zone<span>.</span></a>
