@@ -16,6 +16,7 @@ const ProductPage = () => {
   const [item, setItem] = useState();
   const [page, setPage] = useState(1)
   const[isLoading,setIsLoading] = useState(true)
+  const[filterOption,setFilterOption] = useState("Filter")
 
   const navigate = useNavigate()
   const dispatch = useDispatch()
@@ -107,13 +108,10 @@ const ProductPage = () => {
   //Filter Function
   async function filterData(event) {
     const value = event.target.value
-
+    setFilterOption(value)
     try {
       if (value == 'Default') {
-        fetchData('b');
-        fetchData('c');
-        fetchData('e');
-
+       
       }
       else {
         setIsLoading(true)
@@ -159,7 +157,7 @@ const ProductPage = () => {
                     <option value="Popularity">Popularity</option>
                   </select>
                   <select onChange={filterData} name='filter'>
-                    <option value="" selected disabled >Filter</option>
+                    <option value="" selected disabled >{filterOption}</option>
                     <option value="Vegetarian">Vegetarian</option>
                     <option value="Beef">Beef</option>
                     <option value="Chicken">Chicken</option>
