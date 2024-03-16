@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import banner1 from '../../assets/banner!.jpg'
 import banner2 from '../../assets/banner2.jpg'
 import banner3 from '../../assets/banner3.jpg'
@@ -6,8 +6,8 @@ import banner3 from '../../assets/banner3.jpg'
 import './ProductPage.css';
 import axios from 'axios';
 import UserNavbar from '../UserNavBar/UserNavbar.jsx';
+import { useNavigate, useParams,useLocation } from 'react-router-dom'
 
-import { useNavigate } from 'react-router-dom';
 import { singleProduct } from '../../Redux/selecteditemSlice.jsx';
 import { useDispatch, useSelector } from 'react-redux';
 import {addToCart} from "../../Redux/cartSlice.jsx"
@@ -19,17 +19,27 @@ import Footer from '../Footer/Footer.jsx';
 
 const ProductPage = () => {
 
+  useEffect(() => {
+    const queryParams = new URLSearchParams(location.search);
+    const str = location.search.toString();
+    let modifiedStr = str.replace(/\?/g, '');
+    setSample(modifiedStr);
+  }, [location.search]);
+  
+  
   const [item, setItem] = useState();
   const [page, setPage] = useState(1)
   const[isLoading,setIsLoading] = useState(true)
   const[filterOption,setFilterOption] = useState("Filter")
   const [currentSlide, setCurrentSlide] = useState(1);
+  const [sample,setSample] = useState(null)
 
   const navigate = useNavigate()
   const dispatch = useDispatch()
+  
 
 
-  //slide changind animation
+  // slide changind animation
   useEffect(() => {
       const interval = setInterval(() => {
           const nextSlide = currentSlide === 3 ? 1 : currentSlide + 1;
@@ -51,14 +61,21 @@ const ProductPage = () => {
   
   useEffect(() => {
     // Call fetchData immediately
+  
+   if(sample){
+    relatedData(sample)
+      
+   }else{
     setTimeout(()=>{
       fetchData('b');
       fetchData('c');
       fetchData('e');
     },1000)
-  }, [])
+   }
+   
+  }, [sample])
 
-
+  
 
 
   //fetch Data for initial Rendering
@@ -98,7 +115,7 @@ const ProductPage = () => {
 
 
   //generate Price For product
-  function getPrice(id) {
+ function getPrice(id) {
     const str = String(id);
     return str[0] + str[2] + str[str.length - 1]
 
@@ -108,6 +125,7 @@ const ProductPage = () => {
   //sorting function
   function sortData(event) {
     const value = event.target.value
+    
     if (value == 'HightoLow') {
       
       const sortedData = [...item].sort((a, b) => getPrice(b.idMeal) - getPrice(a.idMeal));
@@ -129,6 +147,7 @@ const ProductPage = () => {
   //Filter Function
   async function filterData(event) {
     const value = event.target.value
+    console.log(value);
     setFilterOption(value)
     try {
       if (value == 'Default') {
@@ -145,6 +164,29 @@ const ProductPage = () => {
       console.log(error);
     }
   }
+
+  async function relatedData(value) {
+    console.log(value);
+   // setFilterOption(value)
+    try {
+      if (value == 'Default') { 
+       
+      }
+      else {
+        setIsLoading(true)
+        const response = await axios.get(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${value}`);
+        setItem(response.data.meals)
+        setIsLoading(false)
+      }
+
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+
+
+
 
 
 
@@ -354,3 +396,4 @@ const ProductPage = () => {
 }
 
 export default ProductPage;
+

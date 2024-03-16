@@ -2,13 +2,14 @@ import React, { useEffect, useState } from 'react'
 import './ProductView.css'
 import UserNavBar from '../UserNavBar/UserNavbar'
 import Footer from '../Footer/Footer'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { useSelector,useDispatch } from 'react-redux'
 import { addToCart } from '../../Redux/cartSlice'
 import axios from 'axios'
-const ProductView = () => {
+import { singleProduct } from '../../Redux/selecteditemSlice'
 
-  
+const ProductView = () => {
+ 
   const productData  = useSelector(state => state.selectedProduct.productData)
   const user = useSelector(state=> state.userData)
   const para =productData.details
@@ -35,6 +36,12 @@ const ProductView = () => {
      
    })()
   },[productData.category])
+
+  function getPrice(id) {
+    const str = String(id);
+    return str[0] + str[2] + str[str.length - 1]
+
+  }
  
   return (
     <div>
@@ -80,7 +87,11 @@ const ProductView = () => {
           <h3 style={{marginLeft:"20px"}}>Product Details <i className="fas fa-indent"></i></h3>
           <br />
           <p  style={{color:'black',marginLeft:"20px"}} >
-           {para?.substring(0,500)}.
+           {para?.substring(0,500) || 
+           'The process of making tempeh murni (pure soybean cakes) begins with the whole beans being soaked overnight. They are then skinned before being cooked. Afterward they are packed into a plastic bag (or otherwise covered in plastic) and left to ferment for two to three days in a hot, humid place. All forms of tempeh are widely produced in Southeast Asia and are available in blocks, both fresh and frozen. Home cooks in Indonesia also prepare their own tempeh, the tropical climate being ideally suited to the fermentation process.'
+           
+           
+           }.
           </p>
         </div>
       </div>
@@ -98,7 +109,18 @@ const ProductView = () => {
        {relatedData?.map((item)=>(
         <div className="col-4" style={{gap:0}}>
           
-        <img src={item?.strMealThumb} alt=""style={{borderRadius:'10px',cursor:'pointer'}} />
+        <img src={item?.strMealThumb} alt=""style={{borderRadius:'10px',cursor:'pointer'}} onClick={()=>{
+           navigate(`/productview/${item.idMeal}`)
+           dispatch(singleProduct(
+            {
+              id: item?.idMeal,
+              name: item?.strMeal,
+              img: item?.strMealThumb,
+              details: item?.strInstructions,
+              price: getPrice(item.idMeal),
+              category:productData.category
+            }))
+           }} />
         <label htmlFor="">{item?.strMeal}</label>
           
         </div>
@@ -111,7 +133,10 @@ const ProductView = () => {
        {otherFoods?.map((item)=>(
         <div className="col-4" style={{gap:20}}>
           
-        <img src={item?.strCategoryThumb} alt=""style={{borderRadius:'10px',cursor:'pointer'}} />
+        <img src={item?.strCategoryThumb} alt=""style={{borderRadius:'10px',cursor:'pointer'}} onClick={()=>{
+          navigate(`/products?${item?.strCategory}`
+          )
+        }} />
         <label htmlFor="">{item?.strCategory}</label>
           
         </div>
