@@ -5,15 +5,36 @@ import Footer from '../Footer/Footer'
 import { useNavigate, useParams } from 'react-router-dom'
 import { useSelector,useDispatch } from 'react-redux'
 import { addToCart } from '../../Redux/cartSlice'
+import axios from 'axios'
 const ProductView = () => {
 
-  const id  = useParams() 
+  
   const productData  = useSelector(state => state.selectedProduct.productData)
   const user = useSelector(state=> state.userData)
   const para =productData.details
   const cartData = useSelector(state => state.cart.cart)
+  const [relatedData,setRelatedData]  = useState()
+  const [otherFoods,setOtherFoods]  = useState()
   const navigate = useNavigate()
   const dispatch = useDispatch()
+
+  useEffect(()=>{
+    (async()=>{
+       const data  = await axios.get(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${productData.category}`)
+       setRelatedData(data.data.meals)
+       
+      
+    })()
+  },[productData.category])
+  
+  useEffect(()=>{
+    (async()=>{
+      const data  = await axios.get(`https://www.themealdb.com/api/json/v1/1/categories.php`)
+      console.log(data);
+      setOtherFoods(data.data.categories)
+     
+   })()
+  },[productData.category])
  
   return (
     <div>
@@ -29,7 +50,7 @@ const ProductView = () => {
         </div>
         <div className="col-2"  style={{margin:0,padding:0,boxSizing:'border-box'}}>
           <p style={{color:'black',marginLeft:"20px"}}>Home / Foods</p>
-          <h1  style={{color:'black',marginLeft:"20px"}}>{productData.name}</h1>
+          <h1  style={{color:'black',marginLeft:"10px"}}>{productData.name}</h1>
           <h4 style={{marginLeft:"20px"}}>${productData.price}</h4>
          
           
@@ -66,20 +87,38 @@ const ProductView = () => {
     </div>
     <div className="dsmall-container"  style={{margin:0,padding:0,boxSizing:'border-box'}}>
       <div className="row row-2">
-        <h2>Related Products</h2>
-        <p>View more</p>
+        <h2>Related Foods</h2>
+        
       </div>
-
-
-      <div className="row"  style={{margin:0,padding:0,boxSizing:'border-box'}}>
-        <div className="col-4">
-          <img src="" alt="" />
+    </div>
+    </div>
+    <div   style={{ overflowX: 'auto' ,marginLeft:"50px",marginRight:"50px"}}>
+      
+     <div className="row"  style={{margin:0,padding:0,boxSizing:'border-box',marginBottom:'10px',display:'flex',marginRight:'10px'}}>
+       {relatedData?.map((item)=>(
+        <div className="col-4" style={{gap:0}}>
+          
+        <img src={item?.strMealThumb} alt=""style={{borderRadius:'10px',cursor:'pointer'}} />
+        <label htmlFor="">{item?.strMeal}</label>
           
         </div>
+      )) }
       </div>
-      
-    </div>
-    </div>
+   </div>
+   <h2 style={{marginLeft:'80px',marginTop:'-70px'}}>Other Foods</h2>
+   <div  style={{ overflowX: 'auto' ,marginLeft:"50px",marginRight:"50px"}}>
+   <div className="row"  style={{margin:0,padding:0,boxSizing:'border-box',marginBottom:'30px',display:'flex'}}>
+       {otherFoods?.map((item)=>(
+        <div className="col-4" style={{gap:20}}>
+          
+        <img src={item?.strCategoryThumb} alt=""style={{borderRadius:'10px',cursor:'pointer'}} />
+        <label htmlFor="">{item?.strCategory}</label>
+          
+        </div>
+      )) }
+      </div>
+   </div>
+     
     <Footer/>
     </div>
   )

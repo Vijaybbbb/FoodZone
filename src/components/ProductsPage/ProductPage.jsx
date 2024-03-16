@@ -252,7 +252,7 @@ const ProductPage = () => {
                             img: data?.strMealThumb,
                             details: data?.strInstructions,
                             price: getPrice(data.idMeal),
-                            category:filterOption == 'Filter' ? "chicken" : {filterOption}
+                            category:filterOption == 'Filter' ? "chicken" : filterOption
                           }))
                         
 
