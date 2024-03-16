@@ -17,6 +17,7 @@ import  singleProduct  from "./selecteditemSlice";
 import cart from './cartSlice'
 import userOrder from './UserOrderDetailsSlice'
 
+
 const persistConfig = {
   key: 'root',
   version: 1,
@@ -26,7 +27,8 @@ const rootReducer = combineReducers({
        userData:LoginStatus,
        selectedProduct:singleProduct,
        cart:cart,
-       userOrder:userOrder
+       userOrder:userOrder,
+       
 })
 
 const persistedReducer = persistReducer(persistConfig,rootReducer)

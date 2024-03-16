@@ -10,13 +10,14 @@ const loginSlice = createSlice({
               imag:null,
               details:null,
               price:null,
+              category:null
               
              }
        },
        reducers:{
               singleProduct:(state,action)=>{
-                     const { id, name, img, details ,price } = action.payload;
-                      state.productData = { id, name, img, details , price };
+                     const { id, name, img, details ,price, category } = action.payload;
+                      state.productData = { id, name, img, details , price, category };
               }
        }
 })

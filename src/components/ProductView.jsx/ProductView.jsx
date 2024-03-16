@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './ProductView.css'
 import UserNavBar from '../UserNavBar/UserNavbar'
 import Footer from '../Footer/Footer'
@@ -14,7 +14,7 @@ const ProductView = () => {
   const cartData = useSelector(state => state.cart.cart)
   const navigate = useNavigate()
   const dispatch = useDispatch()
-
+ 
   return (
     <div>
       <UserNavBar/>
@@ -59,7 +59,7 @@ const ProductView = () => {
           <h3 style={{marginLeft:"20px"}}>Product Details <i className="fas fa-indent"></i></h3>
           <br />
           <p  style={{color:'black',marginLeft:"20px"}} >
-           {para.substring(0,500)}.
+           {para?.substring(0,500)}.
           </p>
         </div>
       </div>
@@ -69,22 +69,15 @@ const ProductView = () => {
         <h2>Related Products</h2>
         <p>View more</p>
       </div>
+
+
       <div className="row"  style={{margin:0,padding:0,boxSizing:'border-box'}}>
         <div className="col-4">
           <img src="" alt="" />
-          <h4></h4>
-          <div className="rating">
-            <i className="fas fa-star"></i>
-            <i className="fas fa-star"></i>
-            <i className="fas fa-star"></i>
-            <i className="fas fa-star"></i>
-            <i className="far fa-star"></i>
-          </div>
-          <p>₹500.00</p>
+          
         </div>
-   
-     
       </div>
+      
     </div>
     </div>
     <Footer/>

@@ -11,7 +11,10 @@ import { useNavigate } from 'react-router-dom';
 import { singleProduct } from '../../Redux/selecteditemSlice.jsx';
 import { useDispatch, useSelector } from 'react-redux';
 import {addToCart} from "../../Redux/cartSlice.jsx"
+
+
 import Footer from '../Footer/Footer.jsx';
+
 
 
 const ProductPage = () => {
@@ -239,15 +242,19 @@ const ProductPage = () => {
                     {item && item.slice(page * 12 - 12, page * 12).map((data, index) => (
 
                       <div className="card" onClick={() => {
-                        navigate(`/productview/${data.idMeal}`)
-                        dispatch(singleProduct(
+                      
+                      
+                          navigate(`/productview/${data.idMeal}`)
+                          dispatch(singleProduct(
                           {
                             id: data?.idMeal,
                             name: data?.strMeal,
                             img: data?.strMealThumb,
                             details: data?.strInstructions,
-                            price: getPrice(data.idMeal)
+                            price: getPrice(data.idMeal),
+                            category:filterOption == 'Filter' ? "chicken" : {filterOption}
                           }))
+                        
 
                       }} key={index}>
                         <div className="card__image">
@@ -318,7 +325,7 @@ const ProductPage = () => {
       <div style={{ width: '100%', height: '100px', backgroundColor: "white" }}>
 
 
-        <div style={{ marginTop: '620px', marginLeft: '10px', alignItems: 'center', display: 'flex', justifyContent: 'center', width: "100%" }}>
+        <div style={{ marginTop: '720px', marginLeft: '10px', alignItems: 'center', display: 'flex', justifyContent: 'center', width: "100%" }}>
           {item && item.length > 0 && (
             <div className="page-btn">
               <span onClick={() => { selectedPage(page - 1) }}>{'<'}</span>
