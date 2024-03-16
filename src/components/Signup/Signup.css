@@ -1,9 +1,9 @@
-body {
-    background-color: #ffffff;
+.slbg{
+    background-color: #dc0000;
     font-family: 'Ubuntu', sans-serif;
-   }
-   
-   .main {
+}
+
+   .smain {
        background-color: #ffffff;
        width: 400px;
        height: 400px;
@@ -12,7 +12,7 @@ body {
        box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.14);
    }
    
-   .sign {
+   .ssign {
        padding-top: 40px;
        color: #ff5900;
        font-family: 'Ubuntu', sans-serif;
@@ -20,7 +20,7 @@ body {
        font-size: 23px;
    }
    
-   .un {
+   .sun {
    width: 76%;
    color: rgb(38, 50, 56);
    font-weight: 700;
@@ -44,7 +44,7 @@ body {
        padding-top: 40px;
    }
    
-   .pass {
+   .spass {
            width: 76%;
    color: rgb(38, 50, 56);
    font-weight: 700;
@@ -65,12 +65,12 @@ body {
    }
    
   
-   .un:focus, .pass:focus {
+   .sun:focus, .pass:focus {
        border: 2px solid rgba(0, 0, 0, 0.18) !important;
        
    }
    
-   .submit {
+   .ssubmit {
      cursor: pointer;
        border-radius: 5em;
        color: #fff;
@@ -86,7 +86,7 @@ body {
        box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
    }
    
-   .forgot {
+   .sforgot {
        text-shadow: 0px 0px 3px rgba(117, 117, 117, 0.12);
        color: #000000;
        padding-top: 15px;

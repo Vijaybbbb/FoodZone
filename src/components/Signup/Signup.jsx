@@ -5,7 +5,7 @@ import { createUserWithEmailAndPassword } from 'firebase/auth';
 import '../../Firebase/config';
 import { collection,getFirestore,addDoc } from 'firebase/firestore';
 import { useNavigate } from 'react-router-dom';
-
+import bg from '../../assets/veg.jpg'
 
 const SignInPage = () => {
   
@@ -33,16 +33,17 @@ const SignInPage = () => {
   }
 
   return (
-  
-    <div className="main">
-          <p className="sign" align="center">Sign Up</p>
-          <form className="form1">
-            <input className="un" type="text" align="center" placeholder="Email" onChange={(e)=>{setEmail(e.target.value)}} />
-            <input className="un" type="text" align="center" placeholder="Username"  onChange={(e)=>{setUsername(e.target.value)}}/>
-            <input className="pass" type="password" align="center" placeholder="Password"  onChange={(e)=>{setPassword(e.target.value)}}/>
-            <a className="submit" align="center" onClick={handleSubmit}>Sign Up</a>
-            <p className="forgot" align="center"><a href="#">Forgot Password?</a></p>
+    <div className='slbg'style={{ backgroundImage: `url(${bg})`,marginTop:'-800'}}>
+    <div className="smain" style={{marginTop:"100px"}}>
+          <p className="ssign" align="center">Sign Up</p>
+          <form className="sform1">
+            <input className="sun" type="text" align="center" placeholder="Email" onChange={(e)=>{setEmail(e.target.value)}} />
+            <input className="sun" type="text" align="center" placeholder="Username"  onChange={(e)=>{setUsername(e.target.value)}}/>
+            <input className="spass" type="password" align="center" placeholder="Password"  onChange={(e)=>{setPassword(e.target.value)}}/>
+            <a className="ssubmit" align="center" onClick={handleSubmit}>Sign Up</a>
+            <p className="sforgot" align="center"><a href="#">Forgot Password?</a></p>
           </form>
+        </div>
         </div>
   );
 };

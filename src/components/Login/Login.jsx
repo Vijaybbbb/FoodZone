@@ -28,20 +28,20 @@ const Login = () => {
        }
 
        return (
-            <div className='bg'style={{ backgroundImage: `url(${bg})`,position:'relative'}}>
-              <div className="main" >
-              <p className="sign" align="center">Login</p>
+            <div className='lbg'style={{ backgroundImage: `url(${bg})`,marginTop:'-800'}}>
+              <div className="lmain"  style={{marginTop:"100px"}}>
+              <p className="lsign" align="center">Login</p>
               {error ? (
               <p style={{color:'red',fontSize:'10px',position:'relative',top:'300px',left:'138px'}}>Invalid Credentials</p>
               ):('')
                }
-              <form className="form1">
-                  <input className="un" required type="text" align="center" placeholder="Email" onChange={(e)=>{setEmail(e.target.value)}} />
-                  <input className="pass" required type="password" align="center" placeholder="Password" onChange={(e)=>{setPassword(e.target.value)}} />
-                  <a className="submit" align="center" onClick={handleLogin}>Login</a>
-                  <a className="submitsign" align="center" onClick={() => navigate('/signup')}>Sign Up</a>
+              <form className="lform1">
+                  <input className="lun" required type="text" align="center" placeholder="Email" onChange={(e)=>{setEmail(e.target.value)}} />
+                  <input className="lpass" required type="password" align="center" placeholder="Password" onChange={(e)=>{setPassword(e.target.value)}} />
+                  <a className="lsubmit" align="center" onClick={handleLogin}>Login</a>
+                  <a className="lsubmitsign" align="center" onClick={() => navigate('/signup')}>Sign Up</a>
                   <br /><br />
-                  <p className="forgot" align="center"><a href="#">Forgot Password?</a></p>
+                  <p className="lforgot" align="center"><a href="#">Forgot Password?</a></p>
               </form>
             </div>
             </div>
