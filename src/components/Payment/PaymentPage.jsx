@@ -30,7 +30,7 @@ const PaymentPage = () => {
             <form style={{ width: '35rem', boxShadow: '0px 4px 4px rgba(102, 102, 102, 0.25)', borderRadius: '3px' }}>
                 {/* Header */}
                 <section style={{ display: 'flex', flexDirection: 'column', backgroundColor: 'var(--brand_blue)', padding: '1rem', height: '7rem', borderRadius: '3px 3px 0 0' }}>
-                    <h1 id="title">Payment Checkout</h1>
+                    <p style={{fontSize:'30px'}}>Payment</p>
                     <p id="description" style={{marginTop:'10px'}}>Checkout with Ease</p>
                     <p id="description" style={{fontSize:'10px',marginTop:'-15px',marginLeft:'300px',position:'relative'}}>Payable Amount : ${total}</p>
                 </section>

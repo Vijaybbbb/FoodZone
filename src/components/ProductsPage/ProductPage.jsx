@@ -1,19 +1,13 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
-import banner1 from '../../assets/banner!.jpg'
-import banner2 from '../../assets/banner2.jpg'
-import banner3 from '../../assets/banner3.jpg'
-
-import './ProductPage.css';
+import React, { useEffect, useRef, useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import UserNavbar from '../UserNavBar/UserNavbar.jsx';
-import { useNavigate, useParams,useLocation } from 'react-router-dom'
-
-import { singleProduct } from '../../Redux/selecteditemSlice.jsx';
+import './ProductPage.css';
 import { useDispatch, useSelector } from 'react-redux';
-import {addToCart} from "../../Redux/cartSlice.jsx"
-
-
+import { addToCart } from "../../Redux/cartSlice.jsx";
+import { singleProduct } from '../../Redux/selecteditemSlice.jsx';
 import Footer from '../Footer/Footer.jsx';
+import CarouselPage from '../carousel/CarouselPage.jsx';
 
 
 
@@ -25,7 +19,7 @@ const ProductPage = () => {
     let modifiedStr = str.replace(/\?/g, '');
     setSample(modifiedStr);
   }, [location.search]);
-  
+  console.log("ReRendering");
   
   const [item, setItem] = useState();
   const [page, setPage] = useState(1)
@@ -37,21 +31,6 @@ const ProductPage = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
   
-
-
-  // slide changind animation
-  useEffect(() => {
-      const interval = setInterval(() => {
-          const nextSlide = currentSlide === 3 ? 1 : currentSlide + 1;
-          setCurrentSlide(nextSlide);
-      }, 5000); // Adjust the interval duration as needed (in milliseconds)
-
-      return () => clearInterval(interval);
-  }, [currentSlide]);
-
-
-
-
 
   //fetching cartData from Store
   const cartData = useSelector(state => state.cart.cart)
@@ -208,50 +187,8 @@ const ProductPage = () => {
    <div style={{ backgroundColor: 'white', height: '1000px'}}>
           <div className='card-contanier' style={{ marginLeft: '-700px' }} >
             <UserNavbar />
-            <div style={{backgroundColor:"white",width:'100%',height:"400px"}}>
-            <div className="carousel">
-            <div className="carousel-inner">
-            <input className="carousel-open" type="radio" id="carousel-3" name="carousel" aria-hidden="true" hidden checked={currentSlide === 5} />
-                <div className="carousel-item">
-                    <img src={banner3} alt="Carousel" />
-                </div>
-                <input className="carousel-open" type="radio" id="carousel-1" name="carousel" aria-hidden="true" hidden checked={currentSlide === 1} />
-                <div className="carousel-item">
-                    <img src={banner1} alt="Without" />
-                </div>
-                <input className="carousel-open" type="radio" id="carousel-2" name="carousel" aria-hidden="true" hidden  checked={currentSlide === 2}/>
-                <div className="carousel-item">
-                    <img src={banner2} alt="JavaScript" />
-                </div>
-                <input className="carousel-open" type="radio" id="carousel-3" name="carousel" aria-hidden="true" hidden  checked={currentSlide === 3}/>
-                <div className="carousel-item">
-                    <img src={banner3} alt="Carousel" />
-                </div>
-                <input className="carousel-open" type="radio" id="carousel-3" name="carousel" aria-hidden="true" hidden checked={currentSlide === 4} />
-                <div className="carousel-item">
-                    <img src={banner3} alt="Carousel" />
-                </div>
-                <label htmlFor="carousel-3" className="carousel-control prev control-1">‹</label>
-                <label htmlFor="carousel-2" className="carousel-control next control-1">›</label>
-                <label htmlFor="carousel-1" className="carousel-control prev control-2">‹</label>
-                <label htmlFor="carousel-3" className="carousel-control next control-2">›</label>
-                <label htmlFor="carousel-2" className="carousel-control prev control-3">‹</label>
-                <label htmlFor="carousel-1" className="carousel-control next control-3">›</label>
-                <ol className="carousel-indicators">
-                    <li>
-                        <label htmlFor="carousel-1" className="carousel-bullet">•</label>
-                    </li>
-                    <li>
-                        <label htmlFor="carousel-2" className="carousel-bullet">•</label>
-                    </li>
-                    <li>
-                        <label htmlFor="carousel-3" className="carousel-bullet">•</label>
-                    </li>
-                </ol>
-            </div>
-        </div>
-
-            </div><br />
+            <CarouselPage/>
+            <br />
             <div className="small-container" >
               <div className="row row-2" style={{ backgroundColor: 'white' }}>
                 <h2 className='allprod'></h2>
