@@ -1,35 +1,46 @@
-<!DOCTYPE html>
-<html lang="en">
+<html lang="en" >
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Order Details</title>
-    <link rel="stylesheet" href="./sample.css">
-</head>
- 
+  <meta charset="UTF-8">
+  <title>Order Olaced Button</title>
+  <link rel="stylesheet" href="./sample.css">
 
+</head>
 <body>
-            <div className="profile-container">
-                <div className="qcard">
-                    <div className="qcard-img">
-                       <img src="https://octodex.github.com/images/codercat.jpg" alt="profile">  
-                    </div>
-                    <div className="qdesc">
-                       <h6 className="qprimary-text">Rosemary Ly</h6>
-                       <h6 className="qsecondary-text">Front End Developer</h6>
-                    </div>
-                    <button id="qbutton" className="qprimary-text">View Profile</button>
-                    <div className="qdetails">
-                       <div className="qrating">
-                          <h6 className="qprimary-text">86%</h6>
-                          <h6 className="qsecondary-text">Rating</h6>
-                       </div>
-                       <div className="qactivity">
-                          <h6 className="qprimary-text">92%</h6>
-                          <h6 className="qsecondary-text">Activity</h6>
-                       </div>
-                    </div>
-                 </div>
-            </div>
-    </body>
+  <div class="carousel">
+    <div class="carousel-inner">
+        <input class="carousel-open" type="radio" id="carousel-1" name="carousel" aria-hidden="true" hidden="" checked="checked">
+        <div class="carousel-item">
+            <img src="http://fakeimg.pl/2000x800/0079D8/fff/?text=Without">
+        </div>
+        <input class="carousel-open" type="radio" id="carousel-2" name="carousel" aria-hidden="true" hidden="">
+        <div class="carousel-item">
+            <img src="http://fakeimg.pl/2000x800/DA5930/fff/?text=JavaScript">
+        </div>
+        <input class="carousel-open" type="radio" id="carousel-3" name="carousel" aria-hidden="true" hidden="">
+        <div class="carousel-item">
+            <img src="http://fakeimg.pl/2000x800/F90/fff/?text=Carousel">
+        </div>
+        <label for="carousel-3" class="carousel-control prev control-1">‹</label>
+        <label for="carousel-2" class="carousel-control next control-1">›</label>
+        <label for="carousel-1" class="carousel-control prev control-2">‹</label>
+        <label for="carousel-3" class="carousel-control next control-2">›</label>
+        <label for="carousel-2" class="carousel-control prev control-3">‹</label>
+        <label for="carousel-1" class="carousel-control next control-3">›</label>
+        <ol class="carousel-indicators">
+            <li>
+                <label for="carousel-1" class="carousel-bullet">•</label>
+            </li>
+            <li>
+                <label for="carousel-2" class="carousel-bullet">•</label>
+            </li>
+            <li>
+                <label for="carousel-3" class="carousel-bullet">•</label>
+            </li>
+        </ol>
+    </div>
+</div>
+        
+     
+</body>
+
 </html>

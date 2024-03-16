@@ -1,10 +1,12 @@
-body {
+
+   
+   .bg{
     background-color: #ffffff;
     font-family: 'Ubuntu', sans-serif;
    }
    
    .main {
-       background-color: #FFFFFF;
+       background-color: #ffffff;
        width: 400px;
        height: 400px;
        margin: 7em auto;
@@ -116,3 +118,15 @@ body {
         cursor: pointer;
         
     }
+
+
+
+    .bg {
+        background-size: cover; /* Adjusts the background image size to cover the entire container */
+        background-position: center; /* Centers the background image */
+        background-repeat: no-repeat; /* Prevents the background image from repeating */
+        height: 700px;
+        
+      }
+
+      

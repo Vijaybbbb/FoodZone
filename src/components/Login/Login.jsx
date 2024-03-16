@@ -5,6 +5,7 @@ import { auth } from '../../Firebase/config';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { findUser } from '../../Redux/loginSlice';
 import { useDispatch } from 'react-redux';
+import bg from '../../assets/veg.jpg'
 
 const Login = () => {
 
@@ -27,8 +28,8 @@ const Login = () => {
        }
 
        return (
-       
-              <div className="main">
+            <div className='bg'style={{ backgroundImage: `url(${bg})`,position:'relative'}}>
+              <div className="main" >
               <p className="sign" align="center">Login</p>
               {error ? (
               <p style={{color:'red',fontSize:'10px',position:'relative',top:'300px',left:'138px'}}>Invalid Credentials</p>
@@ -42,7 +43,8 @@ const Login = () => {
                   <br /><br />
                   <p className="forgot" align="center"><a href="#">Forgot Password?</a></p>
               </form>
-          </div>
+            </div>
+            </div>
        )
 }
 

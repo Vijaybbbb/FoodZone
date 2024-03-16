@@ -1,4 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
+import banner1 from '../../assets/banner!.jpg'
+import banner2 from '../../assets/banner2.jpg'
+import banner3 from '../../assets/banner3.jpg'
 
 import './ProductPage.css';
 import axios from 'axios';
@@ -17,9 +20,24 @@ const ProductPage = () => {
   const [page, setPage] = useState(1)
   const[isLoading,setIsLoading] = useState(true)
   const[filterOption,setFilterOption] = useState("Filter")
+  const [currentSlide, setCurrentSlide] = useState(1);
 
   const navigate = useNavigate()
   const dispatch = useDispatch()
+
+
+  //slide changind animation
+  useEffect(() => {
+      const interval = setInterval(() => {
+          const nextSlide = currentSlide === 3 ? 1 : currentSlide + 1;
+          setCurrentSlide(nextSlide);
+      }, 5000); // Adjust the interval duration as needed (in milliseconds)
+
+      return () => clearInterval(interval);
+  }, [currentSlide]);
+
+
+
 
 
   //fetching cartData from Store
@@ -145,6 +163,50 @@ const ProductPage = () => {
    <div style={{ backgroundColor: 'white', height: '1000px'}}>
           <div className='card-contanier' style={{ marginLeft: '-700px' }} >
             <UserNavbar />
+            <div style={{backgroundColor:"white",width:'100%',height:"400px"}}>
+            <div className="carousel">
+            <div className="carousel-inner">
+            <input className="carousel-open" type="radio" id="carousel-3" name="carousel" aria-hidden="true" hidden checked={currentSlide === 5} />
+                <div className="carousel-item">
+                    <img src={banner3} alt="Carousel" />
+                </div>
+                <input className="carousel-open" type="radio" id="carousel-1" name="carousel" aria-hidden="true" hidden checked={currentSlide === 1} />
+                <div className="carousel-item">
+                    <img src={banner1} alt="Without" />
+                </div>
+                <input className="carousel-open" type="radio" id="carousel-2" name="carousel" aria-hidden="true" hidden  checked={currentSlide === 2}/>
+                <div className="carousel-item">
+                    <img src={banner2} alt="JavaScript" />
+                </div>
+                <input className="carousel-open" type="radio" id="carousel-3" name="carousel" aria-hidden="true" hidden  checked={currentSlide === 3}/>
+                <div className="carousel-item">
+                    <img src={banner3} alt="Carousel" />
+                </div>
+                <input className="carousel-open" type="radio" id="carousel-3" name="carousel" aria-hidden="true" hidden checked={currentSlide === 4} />
+                <div className="carousel-item">
+                    <img src={banner3} alt="Carousel" />
+                </div>
+                <label htmlFor="carousel-3" className="carousel-control prev control-1">‹</label>
+                <label htmlFor="carousel-2" className="carousel-control next control-1">›</label>
+                <label htmlFor="carousel-1" className="carousel-control prev control-2">‹</label>
+                <label htmlFor="carousel-3" className="carousel-control next control-2">›</label>
+                <label htmlFor="carousel-2" className="carousel-control prev control-3">‹</label>
+                <label htmlFor="carousel-1" className="carousel-control next control-3">›</label>
+                <ol className="carousel-indicators">
+                    <li>
+                        <label htmlFor="carousel-1" className="carousel-bullet">•</label>
+                    </li>
+                    <li>
+                        <label htmlFor="carousel-2" className="carousel-bullet">•</label>
+                    </li>
+                    <li>
+                        <label htmlFor="carousel-3" className="carousel-bullet">•</label>
+                    </li>
+                </ol>
+            </div>
+        </div>
+
+            </div><br />
             <div className="small-container" >
               <div className="row row-2" style={{ backgroundColor: 'white' }}>
                 <h2 className='allprod'></h2>
@@ -256,7 +318,7 @@ const ProductPage = () => {
       <div style={{ width: '100%', height: '100px', backgroundColor: "white" }}>
 
 
-        <div style={{ marginTop: '220px', marginLeft: '10px', alignItems: 'center', display: 'flex', justifyContent: 'center', width: "100%" }}>
+        <div style={{ marginTop: '620px', marginLeft: '10px', alignItems: 'center', display: 'flex', justifyContent: 'center', width: "100%" }}>
           {item && item.length > 0 && (
             <div className="page-btn">
               <span onClick={() => { selectedPage(page - 1) }}>{'<'}</span>
