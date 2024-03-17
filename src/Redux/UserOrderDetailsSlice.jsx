@@ -9,7 +9,7 @@ const userOrderSlice = createSlice({
     addToOrders: (state, action) => {
       const {fullname, email, phone, address1, address2, paymentType, cartData } = action.payload;
       const newOrder = {
-        userDetails: {fullname, email, phone, address1, address2, paymentType,confirmed:true },
+        userDetails: {fullname, email, phone, address1, address2, paymentType },
         cartItems: cartData
       };
       // Push the new order object to the state

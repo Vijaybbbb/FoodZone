@@ -22,9 +22,13 @@ const MyOrders = () => {
     setPrice(p+5);
   }
 
-  function setOrderStatus(id) {
-    setStatus()
-  }
+  // function setOrderStatus(id) {
+  //   setStatus(preStatus =>{
+  //    return preStatus.map((data)=>{
+  //       data.id == id ? data.confirmed = false : null
+  //     })
+  //   })
+  // }
   
 
  
@@ -121,7 +125,7 @@ const MyOrders = () => {
                     {
                       status.map((food)=>{
                           if(food.id==item.id){
-                              return food.confirmed == true ? <td>Confirmed</td> : <td>Canceled</td>
+                              return food.confirmed == true ? <td>Confirmed</td> : <td>Cancehhhled</td>
                           }
                       })
                     }
