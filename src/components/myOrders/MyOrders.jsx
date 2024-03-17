@@ -35,11 +35,7 @@ const MyOrders = () => {
   }
   
 
-  useEffect(()=>{
-    console.log(status);
-  })
-  
-
+ 
 
   return (
     <div>
