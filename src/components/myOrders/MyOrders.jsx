@@ -9,7 +9,7 @@ const MyOrders = () => {
   const orders = useSelector(state => state.userOrder.orderDetails);
   const [address,setAddress] = useState();
   const [price,setPrice] = useState();
-  const [status,setStatus] = useState([{id:null,status:'Confirmed Order'}]);
+  const [status,setStatus] = useState([{id:null,status:''}]);
  
 
   function selectedOrder(order){
@@ -25,13 +25,11 @@ const MyOrders = () => {
     setStatus(prevStatus => {
       // Check if the id exists in the current status array
       const index = prevStatus.findIndex(order => order.id === id);
-      if (index !== -1) {
-        // If the id exists, update the status
-        return prevStatus.map((order, i) => (i === index ? { ...order, status: 'Canceled' } : order));
-      } else {
-        // If the id does not exist, push a new object with the Canceled status
-        return [...prevStatus, { id: id, status: 'Canceled' }];
-      }
+      if(index == -1)
+     {
+      return [...prevStatus,{id:id,status:"canceled"}]
+     }
+     return prevStatus
     });
   }
   
@@ -81,7 +79,7 @@ const MyOrders = () => {
                           }}>View Details</a>
                       </div>
                       <div id="popup">
-                        <div class="window">
+                        <div className="window">
                          <div className='orderDetails'>                 
                     <div className="dcard">
                     <div className="dheader">Order Details</div>
@@ -131,9 +129,12 @@ const MyOrders = () => {
       </div>
                     </td>
                     <td>{order.userDetails.paymentType}</td>
-                    {status.map((food)=>
-                    food.id==item.id ? <td>{food.status}</td> : <td>{food.status}</td>
-                    )}
+                    {status.map((orderStatus) =>
+    orderStatus.id === item.id ? (
+        <td>{orderStatus.status}</td>
+    ) : null
+)}
+
                   </tr>
                 ))}
               </React.Fragment>
