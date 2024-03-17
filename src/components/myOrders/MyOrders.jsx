@@ -10,6 +10,7 @@ const MyOrders = () => {
   const [address,setAddress] = useState();
   const [price,setPrice] = useState();
   const [status,setStatus] = useState([{id:null,status:''}]);
+  console.log(orders);
  
 
   function selectedOrder(order){
