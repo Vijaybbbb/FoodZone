@@ -21,7 +21,7 @@ const Login = () => {
                 dispatch(findUser({email,password}))
                 setTimeout(()=>{
                     navigate('/products')
-                })
+                },1000)
             }).catch(()=>{
                 setError(true)
             })

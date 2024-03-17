@@ -9,8 +9,8 @@ const MyOrders = () => {
   const orders = useSelector(state => state.userOrder.orderDetails);
   const [address,setAddress] = useState();
   const [price,setPrice] = useState();
-  const [status,setStatus] = useState([{id:null,status:''}]);
-  console.log(orders);
+  const [status,setStatus] = useState(orders[0].cartItems);
+  console.log(status);
  
 
   function selectedOrder(order){
@@ -23,15 +23,7 @@ const MyOrders = () => {
   }
 
   function setOrderStatus(id) {
-    setStatus(prevStatus => {
-      // Check if the id exists in the current status array
-      const index = prevStatus.findIndex(order => order.id === id);
-      if(index == -1)
-     {
-      return [...prevStatus,{id:id,status:"canceled"}]
-     }
-     return prevStatus
-    });
+    setStatus()
   }
   
 
@@ -126,11 +118,13 @@ const MyOrders = () => {
       </div>
                     </td>
                     <td>{order.userDetails.paymentType}</td>
-                    {status.map((orderStatus) =>
-    orderStatus.id === item.id ? (
-        <td>{orderStatus.status}</td>
-    ) : null
-)}
+                    {
+                      status.map((food)=>{
+                          if(food.id==item.id){
+                              return food.confirmed == true ? <td>Confirmed</td> : <td>Canceled</td>
+                          }
+                      })
+                    }
 
                   </tr>
                 ))}
