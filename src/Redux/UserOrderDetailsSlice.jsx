@@ -8,9 +8,13 @@ const userOrderSlice = createSlice({
   reducers: {
     addToOrders: (state, action) => {
       const {fullname, email, phone, address1, address2, paymentType, cartData } = action.payload;
+      const modifiedCartData = cartData.map(item => ({
+        ...item,
+        confirmed: true
+      }));
       const newOrder = {
         userDetails: {fullname, email, phone, address1, address2, paymentType },
-        cartItems: cartData
+        cartItems: modifiedCartData
       };
       // Push the new order object to the state
       state.orderDetails.push(newOrder);
