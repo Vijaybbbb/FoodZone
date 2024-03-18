@@ -9,6 +9,8 @@ import ProductView from './components/ProductView.jsx/ProductView'
 import Cart from './components/Cart/Cart'
 import PaymentPage from './components/Payment/PaymentPage'
 import MyOrders from './components/myOrders/MyOrders'
+import SuccessPage from './components/sucess/SuccessPage'
+
 
 
 function App() {
@@ -50,6 +52,10 @@ function App() {
     {
       path:'myorders',
       element:<MyOrders/>
+    },
+    {
+      path:"success",
+      element:<SuccessPage/>
     }
    
   ])
