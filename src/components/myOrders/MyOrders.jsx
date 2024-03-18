@@ -79,7 +79,25 @@ const MyOrders = () => {
                         </a>
                       </div>
                       <div id="popup">
+                      
                         <div className="window">
+                        <div style={{position:"absolute"}}>
+                          <div className='progress1'>
+                              <label htmlFor="" style={{color:'white',position:'absolute',top:'22px',left:'5px'}}>Placed</label>
+                          </div>
+                          <div className='progressLine1'>
+
+                          </div>
+                          <div className='progress2'>
+                              <label htmlFor="" style={{color:'white',position:'absolute',top:'22px',left:'5px'}}>Placed</label>
+                          </div>
+                          <div className='progressLine2'>
+
+                          </div>
+                          <div className='progress3'>
+                              <label htmlFor="" style={{color:'white',position:'absolute',top:'22px',left:'5px'}}>Placed</label>
+                          </div>
+                        </div>
                           <div className="orderDetails">
                             <div className="dcard">
                               <div className="dheader">Order Details</div>

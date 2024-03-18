@@ -198,4 +198,52 @@
   }
  
 
+
+  .progress1{
+    background-color: green;
+    width: 77px;
+    height: 77px;
+    position: absolute;
+    left: 57px;
+    top: 51px;
+    border-radius: 44px;
+  }
+  .progress2{
+    background-color: green;
+    width: 77px;
+    height: 77px;
+    position: absolute;
+    left: 250px;
+    top: 51px;
+    border-radius: 44px;
+  }
+  .progress3{
+    background-color: green;
+    width: 77px;
+    height: 77px;
+    position: absolute;
+    left: 443px;
+    top: 51px;
+    border-radius: 44px;
+  }
   
+
+
+
+  .progressLine1{
+    background-color: green;
+    width: 118px;
+    height: 10px;
+    position: absolute;
+    left: 134px;
+    top: 84px;
+  }
+
+  .progressLine2{
+    background-color: green;
+    width: 118px;
+    height: 10px;
+    position: absolute;
+    left: 134px;
+    top: 84px;
+  }
