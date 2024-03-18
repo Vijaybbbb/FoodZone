@@ -92,12 +92,12 @@
     .window {
       width: 600px;
       background: #fff;
-      border-radius: 10px;
+      border-radius: 20px;
       position: relative;
       box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
       text-align: center;
       margin: 15% auto;
-      height: 700px;
+      height: 668px;
       margin-top: 20px;
     }
     .cancel-button{
@@ -159,7 +159,8 @@
       margin: 5;
       padding: 20px;
       background-color: #ffffff;
-      height: 600px;
+      height: 537px;
+     border-radius: 31px
       
   }
   
@@ -169,7 +170,7 @@
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
       padding: 20px;
       margin-bottom: 0;
-      margin-top: 150px;
+      margin-top: 17px;
       height: 450px;
   }
   .dheader {
@@ -199,60 +200,6 @@
  
 
 
-  .progress1{
-    background-color: green;
-    width: 77px;
-    height: 77px;
-    position: absolute;
-    left: 57px;
-    top: 51px;
-    border-radius: 44px;
-  }
-  .progress2{
-    background-color: green;
-    width: 77px;
-    height: 77px;
-    position: absolute;
-    left: 250px;
-    top: 51px;
-    border-radius: 44px;
-  }
-  .progress3{
-    background-color: green;
-    width: 77px;
-    height: 77px;
-    position: absolute;
-    left: 443px;
-    top: 51px;
-    border-radius: 44px;
-  }
-  .progress3Canceled{
-    background-color: rgb(255, 25, 0);
-    width: 77px;
-    height: 77px;
-    position: absolute;
-    left: 443px;
-    top: 51px;
-    border-radius: 44px
-  }
+  
   
 
-
-
-  .progressLine1{
-    background-color: green;
-    width: 118px;
-    height: 10px;
-    position: absolute;
-    left: 134px;
-    top: 84px;
-  }
-
-  .progressLine2{
-    background-color: green;
-    width: 118px;
-    height: 10px;
-    position: absolute;
-    left: 326px;
-    top: 84px;
-  }

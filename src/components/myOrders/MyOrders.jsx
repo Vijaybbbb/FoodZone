@@ -81,23 +81,7 @@ const MyOrders = () => {
                       <div id="popup">
                       
                         <div className="window">
-                        <div style={{position:"absolute"}}>
-                          <div className='progress1'>
-                              <label htmlFor="" style={{color:'white',position:'absolute',top:'22px',left:'7px',fontSize:'10px'}}>Placed</label>
-                          </div>
-                          <div className='progressLine1'>
-
-                          </div>
-                          <div className='progress2'>
-                              <label htmlFor="" style={{color:'white',position:'absolute',top:'22px',left:'7px',fontSize:'10px'}}>Shipped</label>
-                          </div>
-                          <div className='progressLine2'>
-
-                          </div>
-                          <div className={canceledItems[item.id] ? 'progress3Canceled' : 'progress3'}>
-                              <label ref={ref} htmlFor="" style={{color:'white',position:'absolute',top:'22px',left:'3px',fontSize:'10px'}}>Delivered</label>
-                          </div>
-                        </div>
+                        
                           <div className="orderDetails">
                             <div className="dcard">
                               <div className="dheader">Order Details</div>
