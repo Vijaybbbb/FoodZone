@@ -226,6 +226,15 @@
     top: 51px;
     border-radius: 44px;
   }
+  .progress3Canceled{
+    background-color: rgb(255, 25, 0);
+    width: 77px;
+    height: 77px;
+    position: absolute;
+    left: 443px;
+    top: 51px;
+    border-radius: 44px
+  }
   
 
 
@@ -244,6 +253,6 @@
     width: 118px;
     height: 10px;
     position: absolute;
-    left: 134px;
+    left: 326px;
     top: 84px;
   }

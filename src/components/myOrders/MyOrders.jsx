@@ -10,7 +10,7 @@ const MyOrders = () => {
   const [price, setPrice] = useState();
   const [canceledItems, setCanceledItems] = useState({});
   const [selectedItemId, setSelectedItemId] = useState('');
-  
+  const ref  = useRef()
 
   function selectedOrder(order, itemId) {
     setAddress(order.userDetails);
@@ -83,19 +83,19 @@ const MyOrders = () => {
                         <div className="window">
                         <div style={{position:"absolute"}}>
                           <div className='progress1'>
-                              <label htmlFor="" style={{color:'white',position:'absolute',top:'22px',left:'5px'}}>Placed</label>
+                              <label htmlFor="" style={{color:'white',position:'absolute',top:'22px',left:'7px',fontSize:'10px'}}>Placed</label>
                           </div>
                           <div className='progressLine1'>
 
                           </div>
                           <div className='progress2'>
-                              <label htmlFor="" style={{color:'white',position:'absolute',top:'22px',left:'5px'}}>Placed</label>
+                              <label htmlFor="" style={{color:'white',position:'absolute',top:'22px',left:'7px',fontSize:'10px'}}>Shipped</label>
                           </div>
                           <div className='progressLine2'>
 
                           </div>
-                          <div className='progress3'>
-                              <label htmlFor="" style={{color:'white',position:'absolute',top:'22px',left:'5px'}}>Placed</label>
+                          <div className={canceledItems[item.id] ? 'progress3Canceled' : 'progress3'}>
+                              <label ref={ref} htmlFor="" style={{color:'white',position:'absolute',top:'22px',left:'3px',fontSize:'10px'}}>Delivered</label>
                           </div>
                         </div>
                           <div className="orderDetails">
@@ -160,6 +160,7 @@ const MyOrders = () => {
                     <td >
                     {canceledItems[item.id] ? (
                         <span style={{ color: 'red' }}>Canceled</span>
+                        
                       ) : (
                         <span style={{ color: 'green' }}>Confirmed</span>
                       )}
