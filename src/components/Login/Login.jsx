@@ -19,9 +19,9 @@ const Login = () => {
         event.preventDefault();
             signInWithEmailAndPassword(auth,email,password).then(()=>{
                 dispatch(findUser({email,password}))
-                setTimeout(()=>{
+               
                     navigate('/products')
-                },1000)
+                
             }).catch(()=>{
                 setError(true)
             })
