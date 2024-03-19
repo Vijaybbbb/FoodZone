@@ -41,6 +41,7 @@ const SignInPage = () => {
             <input className="sun" type="text" align="center" placeholder="Username"  onChange={(e)=>{setUsername(e.target.value)}}/>
             <input className="spass" type="password" align="center" placeholder="Password"  onChange={(e)=>{setPassword(e.target.value)}}/>
             <a className="ssubmit" align="center" onClick={handleSubmit}>Sign Up</a>
+            
             <p className="sforgot" align="center"><a href="#">Forgot Password?</a></p>
           </form>
         </div>
