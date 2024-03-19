@@ -33,7 +33,7 @@ const SignInPage = () => {
   }
 
   return (
-    <div className='slbg'style={{ backgroundImage: `url(${bg})`,marginTop:'-800'}}>
+    <div className='sbg'style={{ backgroundImage: `url(${bg})`,marginTop:'-800'}}>
     <div className="smain" style={{marginTop:"100px"}}>
           <p className="ssign" align="center">Sign Up</p>
           <form className="sform1">

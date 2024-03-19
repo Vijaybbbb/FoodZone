@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './Payment.css' 
 import { useNavigate, useParams } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
@@ -17,16 +17,35 @@ const PaymentPage = () => {
     const [address1,setAddress1] = useState()
     const [address2,setAddress2] = useState()
     const [paymentType,setPaymentType]  = useState()
+    const [loading,setLoading]  = useState(false)
 
     const  dispatch = useDispatch()
 
     function handlePaymentType(e){
             setPaymentType(e.target.value)
     }
+    useEffect(()=>{
+
+    },[loading])
 
   return (
-    <div>
-      <div style={{ display: 'flex', width: '500px',display:'flex' ,alignItems:'center',marginLeft:'500px',marginTop:'-60px' }}>
+    <div >
+        {loading&& (
+                <div className='paymentLoader'>
+                      <section class="dots-container">
+                          <div class="dot"></div>
+                          <div class="dot"></div>
+                          <div class="dot"></div>
+                          <div class="dot"></div>
+                          <div class="dot"></div>
+                      </section>
+
+                </div>
+                )}
+
+
+<div className={loading ? 'blured' : ''}>
+      <div style={{ display: 'flex', width: '500px',display:'flex' ,alignItems:'center',marginLeft:'500px',marginTop:'-70px' } }>
             <form style={{ width: '35rem', boxShadow: '0px 4px 4px rgba(102, 102, 102, 0.25)', borderRadius: '3px' }}>
                 {/* Header */}
                 <section style={{ display: 'flex', flexDirection: 'column', backgroundColor: 'var(--brand_blue)', padding: '1rem', height: '7rem', borderRadius: '3px 3px 0 0' }}>
@@ -65,7 +84,7 @@ const PaymentPage = () => {
                    
 
                     {/* Card Type */}
-                    <div style={{ padding: '1rem', display: 'flex', flexDirection: 'column',marginTop:"-30px" }}>
+                    <div style={{ padding: '1rem', display: 'flex', flexDirection: 'column',marginTop:"-40px" }}>
                         <label id="cardType-label" htmlFor="cardType">Payment Type </label>
                         <div style={{ display: 'flex', flexDirection: 'row' }}>
                             <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', flexBasis: '10%' }}>
@@ -84,15 +103,18 @@ const PaymentPage = () => {
                 </section>
                 </form> 
               
-                <section style={{ width:'100%', padding: '1rem', display: 'flex', backgroundColor: 'var(--grey_lighter)',marginTop: "721px",
-    marginLeft: "-500px" }}>
+                <section style={{ width:'100%', padding: '1rem', display: 'flex', backgroundColor: 'var(--grey_lighter)',marginTop: "700px",
+            marginLeft: "-500px" }}>
               
-                    <button id="" onClick={()=>{
+                    <button style={{marginTop:'-1px'}} id="" onClick={()=>{
                        dispatch(addToOrders({fullname,email,phone,address1,address2,paymentType,cartData}))
+                       setLoading(true)
                        setTimeout(()=>{
-                        navigate('/myorders')
+                        navigate('/success')
                         dispatch(clearCart())
-                       })
+                        setLoading(false)
+                       },3000)
+                       
                     }}>Payment Checkout</button>
                 </section>
 
@@ -100,7 +122,8 @@ const PaymentPage = () => {
                 <div style={{ display: 'none' }}>
                     <textarea id="textarea" placeholder="some dummy text"></textarea>
                 </div>
-           
+                
+        </div>
         </div>
     </div>
   )

@@ -1,15 +1,21 @@
-.slbg{
-    background-color: #dc0000;
-    font-family: 'Ubuntu', sans-serif;
-}
 
+
+    
+   
+   .sbg{
+    background-color: #ffffff;
+    font-family: 'Ubuntu', sans-serif;
+   }
+   
    .smain {
        background-color: #ffffff;
        width: 400px;
        height: 400px;
-       margin: 7em auto;
+       position: absolute;
        border-radius: 1.5em;
        box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.14);
+       margin-left: 500px;
+       
    }
    
    .ssign {
@@ -65,13 +71,13 @@
    }
    
   
-   .sun:focus, .pass:focus {
+   .slun:focus, .pass:focus {
        border: 2px solid rgba(0, 0, 0, 0.18) !important;
        
    }
    
    .ssubmit {
-     cursor: pointer;
+       cursor: pointer;
        border-radius: 5em;
        color: #fff;
        background: linear-gradient(to right, #ff5b00, #bd5702);
@@ -89,14 +95,20 @@
    .sforgot {
        text-shadow: 0px 0px 3px rgba(117, 117, 117, 0.12);
        color: #000000;
-       padding-top: 15px;
+       padding-top: 45px;
    }
    
-   a {
+   .ssubmit {
        text-shadow: 0px 0px 3px rgba(117, 117, 117, 0.12);
        color: #E1BEE7;
        text-decoration: none
    }
+     
+   .ssubmitsign {
+    text-shadow: 0px 0px 3px rgba(117, 117, 117, 0.12);
+    color: #E1BEE7;
+    text-decoration: none
+}
    
    @media (max-width: 600px) {
        .main {
@@ -104,3 +116,28 @@
        }
        
     }
+
+    .ssubmitsign
+    {
+        
+        position: absolute;
+       left: 50%; /* Center the button horizontally */
+       bottom: 34%; /* Adjust the distance from the bottom */
+        transform: translateX(-50%); /* Center the button horizontally */
+       color: #E040FB;
+        cursor: pointer;
+        
+    }
+
+
+
+    .sbg {
+       
+    background-size: cover; /* Adjusts the background image size to cover the entire container */
+    background-position: center; /* Centers the background image */
+    background-repeat: no-repeat; /* Prevents the background image from repeating */
+    height: 700px;
+        
+      }
+
+      
